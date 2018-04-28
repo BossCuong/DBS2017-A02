@@ -2,21 +2,21 @@
  * Module dependencies.
  */
 var express = require('express'),
-  routes = require('./routes'),
-  user = require('./routes/user'),
-  company = require('./routes/company'),
-  http = require('http'),
-  path = require('path');
+    routes = require('./routes'),
+    user = require('./routes/user'),
+    company = require('./routes/company'),
+    http = require('http'),
+    path = require('path');
 //var methodOverride = require('method-override');
 var session = require('express-session');
 var app = express();
 var mysql = require('mysql');
 var bodyParser = require("body-parser");
 var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'demo'
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'demo'
 });
 
 connection.connect();
@@ -28,19 +28,26 @@ app.set('port', process.env.PORT || 8080);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
-  extended: false
+    extended: false
 }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    maxAge: 60000
-  }
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 60000
+    }
 }))
 
+app.use((req, res, next) => {
+    var now = new Date().toString();
+    var log = `${now}: ${req.method} ${req.url}`;
+
+    console.log(log);
+    next();
+});
 
 app.get('/', company.db); //call for da post 
 
