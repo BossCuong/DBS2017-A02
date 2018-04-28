@@ -56,7 +56,7 @@ app.get('/', company.db); //call for da post
 
 app.get('/signup', user.signup); //call for signup page
 app.post('/signup', user.signup); //call for signup post 
-app.get('/', routes.index); //call for index page
+//app.get('/', routes.index); //call for index page
 app.post('/login', user.login); //call for login post
 app.get('/login', user.login); //call for login page
 app.get('/home/dashboard', user.dashboard); //call for dashboard page after login

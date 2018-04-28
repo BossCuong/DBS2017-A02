@@ -13,22 +13,26 @@ exports.signup = function (req, res) {
     message = '';
     if (req.method == "POST") {
         var post = req.body;
-        var name = post.user_name;
+
+        var email = post.email;
         var pass = post.password;
         var fname = post.first_name;
         var lname = post.last_name;
         var mob = post.mob_no;
-        if (name == "" || pass == "" || lname == "" || fname == "" || mob == "") {
+
+        if (email == "" || pass == "" || lname == "" || fname == "" || mob == "") {
             message = "Please fill all";
             res.render('signup.ejs', {
                 message: message
             });
+            console.log("Missing information");
             return;
-        }
-        var sql = "INSERT INTO `users`(`first_name`,`last_name`,`mob_no`,`user_name`, `password`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + name + "','" + pass + "')";
+        } else console.log(`Signup sucessfully,accout detail: \n ${JSON.stringify(post,undefined,2)}`);
 
+        var sql = "INSERT INTO `users`(`first_name`,`last_name`,`mob_no`,`email`, `password`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + email + "','" + pass + "')";
         var query = db.query(sql, function (err, result) {
-
+            console.log(err);
+            //if (err) throw err;
             message = "Successfully! Your account has been created.";
             res.render('signup.ejs', {
                 message: message
@@ -97,22 +101,6 @@ exports.logout = function (req, res) {
     req.session.destroy(function (err) {
         res.redirect("/login");
     })
-};
-//--------------------------------render user details after login--------------------------------
-exports.profile = function (req, res) {
-
-    var userId = req.session.userId;
-    if (userId == null) {
-        res.redirect("/login");
-        return;
-    }
-
-    var sql = "SELECT * FROM `users` WHERE `id`='" + userId + "'";
-    db.query(sql, function (err, result) {
-        res.render('profile.ejs', {
-            data: result
-        });
-    });
 };
 //--------------------------------render user details after login--------------------------------
 exports.profile = function (req, res) {

@@ -13,9 +13,8 @@ exports.db = function (req, res) {
     // load database len 
     var sql = "select * from company";
     db.query(sql, function (err, result) {
-        if (err) {
-            throw err;
-        } else {
+        if (err) throw err;
+        else {
             res.render('index.ejs', {
                 data: result
             });
