@@ -8,7 +8,7 @@
     padding-left: 14px; margin-top: 0px;
 }
 #searchBtn
-{
+{ 	background: url("image/search.png");
     border: 3px solid blue;  
     height: 45px;
     width: 50px;  

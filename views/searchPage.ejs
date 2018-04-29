@@ -1,32 +1,52 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <%- include header %>
 <%- include navi %><!-- bar login sign up ... -->
-  <body>
+  <body >
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" style="min-height:420px;">
 
       <!-- Jumbotron Header -->
-      <header class="jumbotron my-4">
-        <h1 class="display-3">Kết quả tìm kiếm</h1>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
-        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
+      <header class="jumbotron my-4" ">
+        <h1 class="display-3">Kết quả tìm kiếm "<%=keyword%>"  </h1>
+        <p class="lead"><h3> Có 100 công việc dành cho bạn</h3></p>
+        
       </header>
 
       <!-- Page Features -->
-      <div class="row text-center">
-
-       
-
-       
-
-        
-
-      
-
-      </div>
-      <!-- /.row -->
+		<p>
+		<div class="w3-container">	
+		<div class="w3-card-4" style="width:80%">
+			<header class="w3-container w3-light-grey">
+			<h3>John Doe</h3>
+			</header>
+			<div class="w3-container"> 
+			<hr>
+			<img src="image/FPT.png" alt="logo" class="w3-left w3-circle w3-margin-right" style="width:60px">
+			<p><%=data[0].id%> load từ data base nè</p><br>
+			</div>
+			<button class="w3-button w3-block w3-dark-grey">+ Chi tiết</button>
+		</div>
+		</div>
+		</p>
+		
+		<p>
+		<div class="w3-container">	
+		<div class="w3-card-4" style="width:80%">
+			<header class="w3-container w3-light-grey">
+			<h3>John Doe</h3>
+			</header>
+			<div class="w3-container"> 
+			<hr>
+			<img src="image/FPT.png" alt="logo" class="w3-left w3-circle w3-margin-right" style="width:60px">
+			<p>CEO at Mighty Schools. Marketing anhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhd Advertising. Seeking a new job and new opportunities.</p><br>
+			</div>
+			<button class="w3-button w3-block w3-dark-grey">+ Chi tiết</button>
+		</div>
+		</div>
+		</p>
 
     </div>
     <!-- /.container -->
-
+	
 <%- include footer %>

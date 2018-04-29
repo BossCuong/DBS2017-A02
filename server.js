@@ -5,6 +5,8 @@ var express = require('express'),
     routes = require('./routes'),
     user = require('./routes/user'),
     company = require('./routes/company'),
+	job=require('./routes/job'),
+	search=require('./routes/search'),
     http = require('http'),
     path = require('path');
 //var methodOverride = require('method-override');
@@ -15,8 +17,8 @@ var bodyParser = require("body-parser");
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
-    database: 'demo'
+    password: 'nguyenhoaidanh',
+    database: 'test'
 });
 
 connection.connect();
@@ -59,10 +61,12 @@ app.post('/signup', user.signup); //call for signup post
 //app.get('/', routes.index); //call for index page
 app.post('/login', user.login); //call for login post
 app.get('/login', user.login); //call for login page
-app.get('/home/dashboard', user.dashboard); //call for dashboard page after login
-app.get('/home/logout', user.logout); //call for logout
-app.get('/home/profile', user.profile); //to render users profile
+app.get('/dashboard', user.dashboard); //call for dashboard page after login
+app.get('/logout', user.logout); //call for logout
+app.get('/profile', user.profile); //to render users profile
 app.get('/company', company.profile); //to render company
-app.get('/search', user.search); //call for signup page
+
+app.post('/search', search.search); app.get('/search', search.search);
+app.get('/job', job.job); //call for job page
 //Middleware
 app.listen(8080)

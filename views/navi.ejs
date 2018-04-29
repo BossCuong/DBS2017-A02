@@ -20,20 +20,20 @@
               <a class="nav-link" href="#">Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="">Contact</a>
             </li>
 			<li class="nav-item">
               <a class="nav-link" href="/login">Login</a>
             </li>
 			<li class="nav-item">
               <a class="nav-link" href="/signup">Sign up</a>
+            </li>	
+			<li ><form method="post" action="/search">
+                <input type="text" placeholder="Search.." id="searchBox" name="search_Box" >
             </li>
 			<li >
-                <input type="text" placeholder="Search.." id="searchBox">
-            </li>
-			<li >
-                <input id="searchBtn" onclick="window.location.href='/search'" type="image" src="image/search.png" alt="Search">
-            </li>
+                <input id="searchBtn" name="search_Btn" onclick="window.location.href='/search'" type="image" src="image/search.png" alt="Search"  >
+            </form></li>
           </ul>
         </div>
       </div>

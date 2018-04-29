@@ -1,12 +1,4 @@
-//--------------------------------render search --------------------------------
-exports.search = function (req, res) {
-    var message = '';
 
-    res.render('searchPage.ejs', {
-        message: message
-    });
-
-};
 
 //---------------------------------------------signup page call------------------------------------------------------
 exports.signup = function (req, res) {
@@ -60,7 +52,7 @@ exports.login = function (req, res) {
                 req.session.userId = results[0].id;
                 req.session.user = results[0];
                 console.log(results[0].id);
-                res.redirect('/home/dashboard');
+                res.redirect('/dashboard');
             } else {
                 message = 'Wrong Credentials.';
                 res.render('login.ejs', {
