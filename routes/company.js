@@ -2,7 +2,7 @@
 exports.profile = function (req, res) {
     var message = '';
 
-    res.render('company.ejs', {
+    res.render('company_profile.ejs', {
         message: message
     });
 
