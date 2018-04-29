@@ -1,7 +1,7 @@
 //--------------------------------render company --------------------------------
 exports.profile = function (req, res) {
     var message = '';
-
+    console.log(req.params.companyName);
     res.render('company_profile.ejs', {
         message: message
     });

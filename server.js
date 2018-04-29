@@ -18,7 +18,7 @@ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'test'
+    database: 'demo'
 });
 
 connection.connect();
@@ -64,7 +64,8 @@ app.get('/login', user.login); //call for login page
 app.get('/dashboard', user.dashboard); //call for dashboard page after login
 app.get('/logout', user.logout); //call for logout
 app.get('/profile', user.profile); //to render users profile
-app.get('/company', company.profile); //to render company
+
+app.get('/company/:companyName', company.profile); //to render company
 
 app.post('/search', search.search);
 app.get('/search', search.search);
