@@ -5,8 +5,8 @@ var express = require('express'),
     routes = require('./routes'),
     user = require('./routes/user'),
     company = require('./routes/company'),
-	job=require('./routes/job'),
-	search=require('./routes/search'),
+    job = require('./routes/job'),
+    search = require('./routes/search'),
     http = require('http'),
     path = require('path');
 //var methodOverride = require('method-override');
@@ -17,7 +17,7 @@ var bodyParser = require("body-parser");
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'nguyenhoaidanh',
+    password: '',
     database: 'test'
 });
 
@@ -66,7 +66,8 @@ app.get('/logout', user.logout); //call for logout
 app.get('/profile', user.profile); //to render users profile
 app.get('/company', company.profile); //to render company
 
-app.post('/search', search.search); app.get('/search', search.search);
+app.post('/search', search.search);
+app.get('/search', search.search);
 app.get('/job', job.job); //call for job page
 //Middleware
 app.listen(8080)
