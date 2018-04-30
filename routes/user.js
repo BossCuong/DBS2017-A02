@@ -41,18 +41,21 @@ exports.login = function (req, res) {
 
     if (req.method == "POST") {
         var post = req.body;
-        var name = post.user_name;
+        var email = post.email;
         var pass = post.password;
 
-        var sql = "SELECT id, first_name, last_name, user_name FROM `users` WHERE `user_name`='" + name + "' and password = '" + pass + "'";
+        var sql = SqlString.format('SELECT id, first_name, last_name, email FROM users WHERE email = ? AND password = ?', [email, pass]);
+
         db.query(sql, function (err, results) {
-            if (results) {
+            if (err) throw err;
+
+            if (results.length > 0) {
                 req.session.userId = results[0].id;
                 req.session.user = results[0];
                 console.log(results[0].id);
                 res.redirect('/dashboard');
             } else {
-                message = 'Wrong Credentials.';
+                message = 'Email or password is not correct.';
                 res.render('login.ejs', {
                     message: message
                 });
@@ -95,6 +98,7 @@ exports.logout = function (req, res) {
 //--------------------------------render user details after login--------------------------------
 exports.profile = function (req, res) {
 
+    console.log("Login successfully");
     var userId = req.session.userId;
     if (userId == null) {
         res.redirect("/login");
