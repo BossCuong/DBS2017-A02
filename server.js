@@ -5,8 +5,8 @@ var express = require('express'),
     routes = require('./routes'),
     user = require('./routes/user'),
     company = require('./routes/company'),
-	job=require('./routes/job'),
-	search=require('./routes/search'),
+    job = require('./routes/job'),
+    search = require('./routes/search'),
     http = require('http'),
     path = require('path');
 //var methodOverride = require('method-override');
@@ -58,15 +58,16 @@ app.get('/', company.db); //call for da post
 
 app.get('/signup', user.signup); //call for signup page
 app.post('/signup', user.signup); //call for signup post 
-//app.get('/', routes.index); //call for index page
 app.post('/login', user.login); //call for login post
 app.get('/login', user.login); //call for login page
 app.get('/dashboard', user.dashboard); //call for dashboard page after login
 app.get('/logout', user.logout); //call for logout
 app.get('/profile', user.profile); //to render users profile
-app.get('/company', company.profile); //to render company
 
-app.post('/search', search.search); app.get('/search', search.search);
+app.get('/company/:companyName', company.profile); //to render company
+
+app.post('/search', search.search);
+app.get('/search', search.search);
 app.get('/job', job.job); //call for job page
 //Middleware
 app.listen(8080)
