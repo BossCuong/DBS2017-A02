@@ -56,10 +56,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', company.db); //call for da post 
-
-// development only
-
 //-------------------------------------------------Signup page------------------------------------------------------------
 app.get('/signup', user.signup); //call for signup page
 app.post('/signup', user.signup); //call for signup post 
@@ -68,6 +64,16 @@ app.post('/signup', user.signup); //call for signup post
 app.get('/login', user.login); //call for login page
 app.post('/login', user.login); //call for login post
 
+app.all('*', function (req, res, next) {
+    if (req.session.userId != null) {
+        next();
+    } else
+        res.redirect('/login');
+});
+
+app.get('/', company.db); //call for da post 
+
+// development only
 //-------------------------------------------------After Login page------------------------------------------------------------
 app.get('/dashboard', user.dashboard); //call for dashboard page after login
 app.get('/logout', user.logout); //call for logout

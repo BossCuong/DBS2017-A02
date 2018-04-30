@@ -5,7 +5,7 @@ exports.signup = function (req, res) {
         var post = req.body;
 
         var email = post.email;
-        var pass = post.password;
+        var pass = post.password[0];
         var fname = post.first_name;
         var lname = post.last_name;
         var mob = post.mob_no;
@@ -15,12 +15,11 @@ exports.signup = function (req, res) {
             res.render('signup.ejs', {
                 message: message
             });
-            console.log("Missing information");
             return;
         } else console.log(`Signup sucessfully,accout detail: \n ${JSON.stringify(post,undefined,2)}`);
 
         hash_pass = SHA256(pass).toString();
-        console.log(hash_pass);
+
         var sql = "INSERT INTO `users`(`first_name`,`last_name`,`mob_no`,`email`, `password`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + email + "','" + hash_pass + "')";
         var query = db.query(sql, function (err, result) {
             if (err) throw err;
@@ -32,9 +31,11 @@ exports.signup = function (req, res) {
         });
 
     } else if (req.session.userId == null) {
-        res.render('signup');
+        res.render('signup.ejs', {
+            message: message
+        });
     } else {
-        res.send("error");
+        res.redirect('dashboard');
     }
 };
 
@@ -42,7 +43,6 @@ exports.signup = function (req, res) {
 exports.login = function (req, res) {
     var message = '';
     var sess = req.session;
-
     if (req.method == "POST") {
         var post = req.body;
         var email = post.email;
@@ -72,7 +72,7 @@ exports.login = function (req, res) {
             message: message
         });
     } else {
-        res.send("error");
+        res.redirect('dashboard');
     }
 
 };

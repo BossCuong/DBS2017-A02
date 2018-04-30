@@ -1,74 +1,87 @@
-<%- include header %>
-<%- include navi %><!-- bar login sign up ... -->
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
 
-<body id="clrblk">
+<head>
+	<title>Bubble SignUp Form a Flat Responsive Widget Template :: w3layouts</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Bubble SignUp Form template Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
+	/>
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
 
-        <div class="container" style="min-height:400px;margin-left:250px;">   
-        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                   
-            <div class="panel panel-info" >
-                    <div class="panel-heading">
-                        <div class="panel-title">Sign In</div>
-                        <!--<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>-->
-                    </div>    
- 
-                    <div style="padding-top:30px" class="panel-body" >
-                                                                        <% if (message.length > 0) { %>
-                                                                                    <div class="alert alert-danger col-sm-12"><%= message %></div>
-                                                                        <% } %>
-                           
-                        <form id="loginform" class="form-horizontal" role="form" method="post" action="/login">
-                                   
-                            <div style="margin-bottom: 25px" class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input id="login-username" type="text" class="form-control" name="email" value="" placeholder="email">                                       
-                                    </div>
-                               
-                            <div style="margin-bottom: 25px" class="input-group">
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
-                                    </div>
-                                   
- 
-                               
-                            <div class="input-group">
-                                      <!--<div class="checkbox">
-                                        <label>
-                                          <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
-                                        </label>
-                                      </div>-->
-                                    </div>
- 
- 
-                                <div style="margin-top:10px" class="form-group">
-                                    <!-- Button -->
- 
-                                    <div class="col-sm-12 controls">
-                                      <button id="btn-login" type="submit" class="btn btn-success">Login  </button>
-                                     
- 
-                                    </div>
-                                </div>
- 
- 
-                                <div class="form-group">
-                                    <div class="col-md-12 control">
-                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                            Don't have an account!
-                                        <a href="/signup">
-                                            Sign Up Here
-                                        </a>
-                                        </div>
-                                    </div>
-                                </div>   
-                            </form>    
- 
- 
- 
-                        </div>                    
-                    </div> 
-        </div>
-       
-    </div>
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- Custom Theme files -->
+	<link href="css/login-signup.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- //Custom Theme files -->
 
-<%- include footer %>
+	<link href="css/alert.css" rel="stylesheet" />
 
+	<!-- web font -->
+	<link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
+	<!-- //web font -->
+</head>
+
+<body>
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<h1>LOG IN</h1>
+		<div class="main-agileinfo">
+			<div class="agileits-top">
+				<form action="#" method="post">
+					<% if (message.length > 0) { %>
+						<div class="alert">
+							<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+							<strong>Wrong!</strong>
+							<%= message %>
+						</div>
+						<% } %>
+							<input class="text email" type="email" name="email" placeholder="Email" required="">
+							<input class="text" type="password" name="password" placeholder="Password" required="">
+							<div class="wthree-text">
+								<label class="anim">
+								</label>
+								<div class="clear"> </div>
+							</div>
+							<input type="submit" value="Login">
+				</form>
+				<p>Don't have an Account?
+					<a href="/signup"> SignUp Now!</a>
+				</p>
+			</div>
+		</div>
+		<!-- copyright -->
+		<div class="w3copyright-agile">
+			<p>© 2017 Bubble SignUp Form. All rights reserved | Design by
+				<a href="http://w3layouts.com/" target="_blank">W3layouts</a>
+			</p>
+		</div>
+		<!-- //copyright -->
+		<ul class="w3lsg-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<!-- //main -->
+</body>
+
+</html>
