@@ -31,8 +31,10 @@ exports.signup = function (req, res) {
             });
         });
 
-    } else {
+    } else if (req.session.userId == null) {
         res.render('signup');
+    } else {
+        res.send("error");
     }
 };
 
@@ -56,7 +58,6 @@ exports.login = function (req, res) {
             if (results.length > 0) {
                 req.session.userId = results[0].id;
                 req.session.user = results[0];
-                console.log(results[0].id);
                 res.redirect('/dashboard');
             } else {
                 message = 'Email or password is not correct.';
@@ -66,10 +67,12 @@ exports.login = function (req, res) {
             }
 
         });
-    } else {
+    } else if (req.session.userId == null) {
         res.render('login.ejs', {
             message: message
         });
+    } else {
+        res.send("error");
     }
 
 };
