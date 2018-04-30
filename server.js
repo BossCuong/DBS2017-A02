@@ -9,6 +9,7 @@ var express = require('express'),
     search = require('./routes/search'),
     http = require('http'),
     SqlString = require('sqlstring'),
+    SHA256 = require("crypto-js/sha256"),
     path = require('path');
 //var methodOverride = require('method-override');
 var session = require('express-session');
@@ -26,6 +27,8 @@ connection.connect();
 
 global.db = connection;
 global.SqlString = SqlString;
+global.SHA256 = SHA256;
+
 // all environments
 app.set('port', process.env.PORT || 8080);
 app.set('views', __dirname + '/views');

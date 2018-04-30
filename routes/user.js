@@ -19,10 +19,12 @@ exports.signup = function (req, res) {
             return;
         } else console.log(`Signup sucessfully,accout detail: \n ${JSON.stringify(post,undefined,2)}`);
 
-        var sql = "INSERT INTO `users`(`first_name`,`last_name`,`mob_no`,`email`, `password`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + email + "','" + pass + "')";
+        hash_pass = SHA256(pass).toString();
+        console.log(hash_pass);
+        var sql = "INSERT INTO `users`(`first_name`,`last_name`,`mob_no`,`email`, `password`) VALUES ('" + fname + "','" + lname + "','" + mob + "','" + email + "','" + hash_pass + "')";
         var query = db.query(sql, function (err, result) {
-            console.log(err);
-            //if (err) throw err;
+            if (err) throw err;
+
             message = "Successfully! Your account has been created.";
             res.render('signup.ejs', {
                 message: message
@@ -44,7 +46,9 @@ exports.login = function (req, res) {
         var email = post.email;
         var pass = post.password;
 
-        var sql = SqlString.format('SELECT id, first_name, last_name, email FROM users WHERE email = ? AND password = ?', [email, pass]);
+        hash_pass = SHA256(pass).toString();
+
+        var sql = SqlString.format('SELECT id, first_name, last_name, email FROM users WHERE email = ? AND password = ?', [email, hash_pass]);
 
         db.query(sql, function (err, results) {
             if (err) throw err;
