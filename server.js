@@ -65,7 +65,7 @@ app.get('/logout', user.logout); //call for logout
 app.get('/profile', user.profile); //to render users profile
 
 app.get('/company/:companyName', company.profile); //to render company
-
+app.get('/company', company.company);
 app.post('/search', search.search);
 app.get('/search', search.search);
 app.get('/job', job.job); //call for job page

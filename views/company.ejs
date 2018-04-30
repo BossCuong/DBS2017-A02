@@ -1,0 +1,54 @@
+
+<%- include header %>
+  <%- include navi %>
+    <!-- bar login sign up ... -->
+<link href="css/next.css" rel="stylesheet">
+<link href="/css/next.css" rel="stylesheet">
+    <body>
+
+      <!-- Page Content -->
+      <div class="container">
+
+        <!-- Jumbotron Header -->
+		
+		<h1> <br>Những công ty hàng đầu<br><br></h1>
+       
+        <!-- Page Features -->
+        <div class="row text-center">
+                    
+		<script>
+		 function create()
+		 { //co may cong ty in ra bay nhieu block
+		 var html='';
+		 html+='<div class="col-lg-3 col-md-6 mb-4">';
+		 html+='<div class="card">';
+		 html+='<img class="card-img-top" src="<%= data[0].srcImg%>" alt="">';
+		 html+='<div class="card-body">';
+		 html+=' <h4 class="card-title">Card title</h4>';
+		 html+='<p class="card-text">';
+		 html+='<%= data[0].id %>';
+		 html+='<%= data[0].name %>';
+		 
+		 html+='</p>';
+		 html+='</div>';
+		 html+='<div class="card-footer">';
+		 html+='<a href="/company/<%=data[0].name%>" class="btn btn-primary">Find Out More!</a>';
+		 html+='</div>';
+		 html+='</div>';
+		 html+='</div>';
+		 return html;
+		 }
+		 var count=<%=data.length%>;
+		 
+		 for(var i=0;i <15;i++)
+		 document.write(create());
+		 </script>
+         
+		
+        </div>
+        <!-- /.row -->
+
+      </div>
+      <!-- /.container -->
+
+      <%- include footer %>
