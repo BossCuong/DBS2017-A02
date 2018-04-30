@@ -1,49 +1,54 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <%- include header %>
-<%- include navi %><!-- bar login sign up ... -->
-  <body>
+	<%- include navi %>
+		<!-- bar login sign up ... -->
 
-    <!-- Page Content -->
-    <div class="container" style="min-height:500px;">
+		<body>
 
-      
-		<h1> <br>Những việc làm mới nhất<br></h1>
-		
-		<script>
-		 function create()
-		 {
-		 var html='';
-		 html+='<p>'+'<div class="w3-container">';
-		 html+='<div class="w3-card-4" style="width:80%">';
-		 html+='<header class="w3-container w3-light-grey">';
-		 html+='<h3>John Doe</h3>';
-		 html+='</header>';
-		 html+='<div class="w3-container">';
-		 html+='<hr>';
-		 html+='<img src="image/FPT.png" alt="logo" class="w3-left w3-circle w3-margin-right" style="width:60px">';
-		 html+='<p><%= data[0].id%> <%= data[0].noidung%> <%= data.length%> (load từ databasse)database có mấy row thì hiển thị mấy post</p><br>';
-		 html+='</div>';
-		 html+='<button class="w3-button w3-block w3-dark-grey">+ Chi tiết</button>';
-		 html+='</div>';
-		 html+='</div>';
-		 html+='</p>';
-		 return html;
-		 }
-		 var count=<%=data.length%>;
-		 
-		 for(var i=0;i <count;i++)
-		 document.write(create());
-		 </script>
-		 
-		
-		
-		
-		
-	  
-	  
-	  
-     
-     </div>
-    <!-- /.container -->
+			<!-- Page Content -->
+			<div class="container" style="min-height:500px;">
 
-<%- include footer %>
+
+				<h1>
+					<br>Những việc làm mới nhất
+					<br>
+				</h1>
+
+				<script>
+					function create() {
+						var html = '';
+						html += '<p>' + '<div class="w3-container">';
+						html += '<div class="w3-card-4" style="width:80%">';
+						html += '<header class="w3-container w3-light-grey">';
+						html += '<h3>John Doe</h3>';
+						html += '</header>';
+						html += '<div class="w3-container">';
+						html += '<hr>';
+						html += '<img src="image/FPT.png" alt="logo" class="w3-left w3-circle w3-margin-right" style="width:60px">';
+						html +=
+							'<p><%= data[0].id%> <%= data[0].noidung%> <%= data.length%> (load từ databasse)database có mấy row thì hiển thị mấy post</p><br>';
+						html += '</div>';
+						html += '<button class="w3-button w3-block w3-dark-grey">+ Chi tiết</button>';
+						html += '</div>';
+						html += '</div>';
+						html += '</p>';
+						return html;
+					}
+					var count = <%=data.length%>;
+
+					for (var i = 0; i < count; i++)
+						document.write(create());
+				</script>
+
+
+
+
+
+
+
+
+
+			</div>
+			<!-- /.container -->
+
+			<%- include footer %>

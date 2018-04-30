@@ -1,12 +1,4 @@
-//--------------------------------render company profile--------------------------------
-exports.profile = function (req, res) {
-    var message = '';
-    console.log(req.params.companyName);
-    res.render('company_profile.ejs', {
-        message: message
-    });
-
-};
+//---------------------------------company page call-------------------------------
 exports.company = function (req, res) {
     var message = '';
     var sql = "select * from company";
@@ -19,6 +11,26 @@ exports.company = function (req, res) {
         }
     });
 
+};
+
+//--------------------------------render company profile--------------------------------
+exports.profile = function (req, res) {
+
+    //Get request parameter
+    var companyName = req.params.companyName;
+
+    //SQL query
+    var sql = SqlString.format("SELECT * FROM company WHERE name = ?", [companyName]);
+
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+
+        if (result.length > 0) {
+            res.render('company_profile.ejs', {
+                data: result
+            });
+        } else res.send('Page not found');
+    });
 };
 
 exports.db = function (req, res) {
