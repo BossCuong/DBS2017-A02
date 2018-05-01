@@ -1,6 +1,12 @@
 .alert {
     padding: 20px;
-    background-color: #f44336;
+    background-color: #ff0000;
+    color: white;
+}
+
+.alert_good {
+    padding: 20px;
+    background-color: #00ff4c;
     color: white;
 }
 
