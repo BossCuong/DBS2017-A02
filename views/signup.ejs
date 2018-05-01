@@ -40,58 +40,57 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="main-agileinfo">
 			<div class="agileits-top">
 				<form action="#" method="post">
-					<% if (message.length > 0) { %>
-						<div class="alert_good">
-							<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-							<%= message %>
-						</div>
-						<% } else if(alert.length > 0) {%>
-							<div class="alert">
-								<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-								<%= alert %>
-							</div>
-							<%}%>
-								<input class="text email" type="email" name="email" placeholder="Email" required="">
-								<input class="text" type="password" name="password" placeholder="Password" required="">
-								<input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
-								<input class="text email" type="text" name="frist_name" placeholder="First name" required="">
-								<input class="text email" type="text" name="last_name" placeholder="Last_name" required="">
-								<input class="text email" type="text" name="mob_no" placeholder="Mobile number" required="">
-								<div class="wthree-text">
-									<label class="anim">
-										<input type="checkbox" class="checkbox" required="">
-										<span>I Agree To The Terms & Conditions</span>
-									</label>
-									<div class="clear"> </div>
+					<% if (message.length > 0) { 
+						if (alert) {%>
+						<div class="alert">
+							<%} else {%>
+								<div class="alert_good">
+									<%}%>
+										<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+										<%= message %>
 								</div>
-								<input type="submit" value="SIGNUP">
+								<%}%>
+									<input class="text email" type="email" name="email" placeholder="Email" required="">
+									<input class="text" type="password" name="password" placeholder="Password" required="">
+									<input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
+									<input class="text email" type="text" name="frist_name" placeholder="First name" required="">
+									<input class="text email" type="text" name="last_name" placeholder="Last_name" required="">
+									<input class="text email" type="text" name="mob_no" placeholder="Mobile number" required="">
+									<div class="wthree-text">
+										<label class="anim">
+											<input type="checkbox" class="checkbox" required="">
+											<span>I Agree To The Terms & Conditions</span>
+										</label>
+										<div class="clear"> </div>
+									</div>
+									<input type="submit" value="SIGNUP">
 				</form>
 				<p>Have an Account?
 					<a href="/login"> Login Now!</a>
 				</p>
+				</div>
 			</div>
+			<!-- copyright -->
+			<div class="w3copyright-agile">
+				<p>© 2017 Bubble SignUp Form. All rights reserved | Design by
+					<a href="http://w3layouts.com/" target="_blank">W3layouts</a>
+				</p>
+			</div>
+			<!-- //copyright -->
+			<ul class="w3lsg-bubbles">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
 		</div>
-		<!-- copyright -->
-		<div class="w3copyright-agile">
-			<p>© 2017 Bubble SignUp Form. All rights reserved | Design by
-				<a href="http://w3layouts.com/" target="_blank">W3layouts</a>
-			</p>
-		</div>
-		<!-- //copyright -->
-		<ul class="w3lsg-bubbles">
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
-	</div>
-	<!-- //main -->
+		<!-- //main -->
 </body>
 
 </html>

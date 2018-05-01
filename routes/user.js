@@ -1,7 +1,7 @@
 //---------------------------------------------signup page call------------------------------------------------------
 exports.signup = function (req, res) {
     message = '';
-    alert = '';
+    alert = false;
     if (req.method == "POST") {
         var post = req.body;
 
@@ -13,7 +13,8 @@ exports.signup = function (req, res) {
         var mob = post.mob_no;
 
         if (pass !== re_pass) {
-            alert = "Error ! Password does not match the confirm password.";
+            message = "Error ! Password does not match the confirm password.";
+            alert = true;
             res.render('signup.ejs', {
                 message: message,
                 alert: alert
