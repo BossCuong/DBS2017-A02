@@ -1,19 +1,22 @@
 //---------------------------------------------signup page call------------------------------------------------------
 exports.signup = function (req, res) {
     message = '';
+    alert = '';
     if (req.method == "POST") {
         var post = req.body;
 
         var email = post.email;
         var pass = post.password[0];
+        var re_pass = post.password[1];
         var fname = post.first_name;
         var lname = post.last_name;
         var mob = post.mob_no;
 
-        if (email == "" || pass == "" || lname == "" || fname == "" || mob == "") {
-            message = "Please fill all";
+        if (pass !== re_pass) {
+            alert = "Error ! Password does not match the confirm password.";
             res.render('signup.ejs', {
-                message: message
+                message: message,
+                alert: alert
             });
             return;
         } else console.log(`Signup sucessfully,accout detail: \n ${JSON.stringify(post,undefined,2)}`);
@@ -26,7 +29,8 @@ exports.signup = function (req, res) {
 
             message = "Successfully! Your account has been created.";
             res.render('signup.ejs', {
-                message: message
+                message: message,
+                alert: alert
             });
         });
 
