@@ -1,17 +1,8 @@
 {
-  "name": "node-restapi",
+  "name": "dbs2018-a02",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": {
-    "name": "Adam",
-    "email": "jstutorials1@gmail.com",
-    "url": "http://www.js-tutorials.com/"
-  },
-  "license": "MIT",
+  "description": "Website for DBS assignment 2018",
+  "main": "server.js",
   "dependencies": {
     "body-parser": "^1.16.1",
     "crypto-js": "^3.1.9-1",
@@ -21,5 +12,20 @@
     "mysql": "^2.13.0",
     "req-flash": "0.0.3",
     "sqlstring": "^2.3.1"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BossCuong/DBS2017-A02.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BossCuong/DBS2017-A02/issues"
+  },
+  "homepage": "https://github.com/BossCuong/DBS2017-A02#readme"
 }
