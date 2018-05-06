@@ -22,15 +22,15 @@ CREATE TABLE IF NOT EXISTS users(
    first_name VARCHAR(100) NOT NULL,
    last_name VARCHAR(100) NOT NULL,
    phone VARCHAR(15) NOT NULL,
-   adress VARCHAR(500) NOT NULL,
+   adress VARCHAR(500),
    email VARCHAR(100) NOT NULL UNIQUE,
    pass VARCHAR(100) NOT NULL,
-   dateDK DATE NOT NULL,
- Bdate DATE NOT NULL,
-   bangCap VARCHAR(100) NOT NULL,
-   kiNangMem VARCHAR(100) NOT NULL,
-ngoaiNgu VARCHAR(100) NOT NULL,
-imgSrc VARCHAR(100) NOT NULL
+   dateDK DATE,
+	Bdate DATE,
+   bangCap VARCHAR(100) ,
+   kiNangMem VARCHAR(100) ,
+ngoaiNgu VARCHAR(100),
+imgSrc VARCHAR(100)
 );
 
 -- dich vu
