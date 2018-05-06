@@ -1,7 +1,7 @@
 use new_schema;
 CREATE TABLE IF NOT EXISTS company(
    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   name VARCHAR(100) NOT NULL,
+   name VARCHAR(100) NOT NULL UNIQUE,
    phone INT(11) NOT NULL,
    adress VARCHAR(500) NOT NULL,
    email VARCHAR(100) NOT NULL,
@@ -10,9 +10,9 @@ CREATE TABLE IF NOT EXISTS company(
    mst INT NOT NULL,
    web VARCHAR(100) NOT NULL,
    location VARCHAR(100) NOT NULL,
- ngaylamviec VARCHAR(100) NOT NULL,
- imgSrc VARCHAR(100) NOT NULL,
-  dometicFlag  bool default true -- True is company trong nuoc, fasle nuoc ngoai
+   ngaylamviec VARCHAR(100) NOT NULL,
+   imgSrc VARCHAR(100) NOT NULL,
+   dometicFlag  bool default true -- True is company trong nuoc, fasle nuoc ngoai
 );
 
 
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS users(
    name VARCHAR(100) NOT NULL,
    phone INT(11) NOT NULL,
    adress VARCHAR(500) NOT NULL,
-   email VARCHAR(100) NOT NULL,
+   email VARCHAR(100) NOT NULL UNIQUE,
    pass VARCHAR(100) NOT NULL,
    dateDK DATE NOT NULL,
  Bdate DATE NOT NULL,
