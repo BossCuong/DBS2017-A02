@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS company(
    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
    name VARCHAR(100) NOT NULL UNIQUE,
    phone VARCHAR(15) NOT NULL,
-   adress VARCHAR(500) NOT NULL,
+   address VARCHAR(500) NOT NULL,
    email VARCHAR(100) NOT NULL,
    pass VARCHAR(100) NOT NULL,
    dateDK DATE NOT NULL ,
@@ -26,11 +26,12 @@ CREATE TABLE IF NOT EXISTS users(
    email VARCHAR(100) NOT NULL UNIQUE,
    pass VARCHAR(100) NOT NULL,
    dateDK DATE,
-	Bdate DATE,
+	 Bdate DATE,
+   experience VARCHAR(50),
    bangCap VARCHAR(100) ,
    kiNangMem VARCHAR(100) ,
-ngoaiNgu VARCHAR(100),
-imgSrc VARCHAR(100)
+   ngoaiNgu VARCHAR(100),
+   imgSrc VARCHAR(100)
 );
 
 -- dich vu
@@ -44,20 +45,20 @@ CREATE TABLE IF NOT EXISTS service(
 CREATE TABLE IF NOT EXISTS job(
    viTri VARCHAR(100) NOT NULL PRIMARY KEY,
    mieuTa VARCHAR(2000) NOT NULL,
-    minSalary INT,
-     maxSalary INT 
+   minSalary INT,
+   maxSalary INT 
 );
 
 -- tin tuyen dung, quan he 1-N
 CREATE TABLE IF NOT EXISTS post(
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   tieuDe VARCHAR(200) NOT NULL ,
-   noiDung VARCHAR(2000) NOT NULL,
-    datePost DATE NOT NULL,
-    idCompany INT NOT NULL,
-    FOREIGN KEY (idCompany)
-        REFERENCES company(id)
-        ON DELETE CASCADE
+  noiDung VARCHAR(2000) NOT NULL,
+  datePost DATE NOT NULL,
+  idCompany INT NOT NULL,
+  address VARCHAR(500),
+  salary INT,
+  FOREIGN KEY (idCompany) REFERENCES company(id) ON DELETE CASCADE
 );
 
 
@@ -72,62 +73,62 @@ CREATE TABLE IF NOT EXISTS skill(
 -- quan he , tat ca deu N-N , 1 cai 1-N :cong ty dang tin tuyen dung
 -- nguoi dung danh gia cty
 CREATE TABLE IF NOT EXISTS danhgia(
-userID int,
-companyID int,
-Constraint FOREIGN KEY (userID) REFERENCES users(id),
-Constraint FOREIGN KEY (companyID) REFERENCES company(id)
+  userID int,
+  companyID int,
+  Constraint FOREIGN KEY (userID) REFERENCES users(id),
+  Constraint FOREIGN KEY (companyID) REFERENCES company(id)
 );
 
 -- cty dang ki dich vu
   CREATE TABLE IF NOT EXISTS dangkidichvu(
-nameDV VARCHAR(100) ,
-companyID int,
-dateDK date not null,
-Constraint FOREIGN KEY (nameDV) REFERENCES service(name),
-Constraint FOREIGN KEY (companyID) REFERENCES company(id)
+  nameDV VARCHAR(100) ,
+  companyID int,
+  dateDK date not null,
+  Constraint FOREIGN KEY (nameDV) REFERENCES service(name),
+  Constraint FOREIGN KEY (companyID) REFERENCES company(id)
 );
 
 -- nguoi dung co  ki nang gi
   CREATE TABLE IF NOT EXISTS dapungkinang(
-userID int,
-skillName VARCHAR(100),
-Constraint FOREIGN KEY (skillName) REFERENCES skill(name),
-Constraint FOREIGN KEY (userID) REFERENCES users(id)
+  userID int,
+  skillName VARCHAR(100),
+  Constraint FOREIGN KEY (skillName) REFERENCES skill(name),
+  Constraint FOREIGN KEY (userID) REFERENCES users(id)
 );
 
 -- tin tuyen dung co  vi tri cong viec gi
   CREATE TABLE IF NOT EXISTS haveJob(
-postID int,
-vitriCV VARCHAR(100),
-Constraint FOREIGN KEY (VitriCV) REFERENCES job(viTri ),
-Constraint FOREIGN KEY (postID) REFERENCES post(id)
+  postID int,
+  vitriCV VARCHAR(100),
+  Constraint FOREIGN KEY (VitriCV) REFERENCES job(viTri ),
+  Constraint FOREIGN KEY (postID) REFERENCES post(id)
 );
 
 -- cong ty tuyen nhung vi tri cong viec nao
  CREATE TABLE IF NOT EXISTS tuyendung(
-companyID int,
-vitriCV VARCHAR(100),
-Constraint FOREIGN KEY (companyID) REFERENCES company(id),
-Constraint FOREIGN KEY (vitriCV) REFERENCES job(viTri )
+  companyID int,
+  vitriCV VARCHAR(100),
+  Constraint FOREIGN KEY (companyID) REFERENCES company(id),
+  Constraint FOREIGN KEY (vitriCV) REFERENCES job(viTri )
 );
 
 -- nguoi dung user apply tin tuyen dung post
  CREATE TABLE IF NOT EXISTS apply(
-postID int,
-userID int,
-status VARCHAR(100) default 'wait',
-dateApply date not null,
-CV VARCHAR(100),
-Constraint FOREIGN KEY (postID) REFERENCES post(id),
-Constraint FOREIGN KEY (userID) REFERENCES users(id )
+  postID int,
+  userID int,
+  status VARCHAR(100) default 'wait',
+  dateApply date not null,
+  CV VARCHAR(100),
+  Constraint FOREIGN KEY (postID) REFERENCES post(id),
+  Constraint FOREIGN KEY (userID) REFERENCES users(id )
 );
 
  -- tin tuyen dung doi hoi co ki nang gi
  CREATE TABLE IF NOT EXISTS doihoikinang(
-postID int,
-skillName VARCHAR(100),
-Constraint FOREIGN KEY (skillName) REFERENCES skill(name),
-Constraint FOREIGN KEY (postID) REFERENCES post(id)
+  postID int,
+  skillName VARCHAR(100),
+  Constraint FOREIGN KEY (skillName) REFERENCES skill(name),
+  Constraint FOREIGN KEY (postID) REFERENCES post(id)
 );
 
 
