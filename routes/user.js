@@ -37,7 +37,7 @@ exports.signup = function (req, res) {
 
         var duplicate_no = 1062;
 
-        var sql = SqlString.format('INSERT INTO users (first_name, last_name, phone, email, pass) VALUES (?,?,?,?,?)', [user.fname, user.lname, user.mob, user.email, hash_pass]);
+        var sql = SqlString.format('CALL addUser(?,?,?,?,?)', [user.fname, user.lname, user.mob, user.email, hash_pass]);
 
         try {
             ConfirmingPassWord(user.pass, user.re_pass);
@@ -94,14 +94,15 @@ exports.login = function (req, res) {
 
         hash_pass = SHA256(pass).toString();
 
-        var sql = SqlString.format('SELECT id, first_name, last_name, email FROM users WHERE email = ? AND pass = ?', [email, hash_pass]);
+        var sql = SqlString.format('CALL getUserAuth(?,?)', [email, hash_pass]);
 
         db.query(sql, function (err, results) {
             if (err) throw err;
 
             if (results.length > 0) {
-                req.session.userId = results[0].id;
-                req.session.user = results[0];
+                console.log(JSON.stringify(results, undefined, 2));
+                req.session.userId = results[0][0].id;
+                req.session.user = results[0][0];
                 res.redirect('/profile');
             } else {
                 message = 'Email or password is not correct.';
@@ -156,7 +157,7 @@ exports.profile = function (req, res) {
         return;
     }
 
-    var sql = "SELECT * FROM `users` WHERE `id`='" + userId + "'";
+    var sql = SqlString.format('call getUserInfo(?)', [userId]);
     db.query(sql, function (err, result) {
         res.render('profile.ejs', {
             data: result
@@ -172,7 +173,7 @@ exports.editprofile = function (req, res) {
         return;
     }
 
-    var sql = "SELECT * FROM `users` WHERE `id`='" + userId + "'";
+    var sql = SqlString.format('call getUserInfo(?)', [userId]);
     db.query(sql, function (err, results) {
         res.render('edit_profile.ejs', {
             data: results
