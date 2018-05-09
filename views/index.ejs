@@ -1,92 +1,64 @@
+
 <%- include header %>
   <%- include navi %>
     <!-- bar login sign up ... -->
-    <link href="css/next.css" rel="stylesheet">
-    <link href="/css/next.css" rel="stylesheet">
-
-    <body>
+<link href="css/index.css" rel="stylesheet">
+<link href="/css/index.css" rel="stylesheet">
+    <body >
 
       <!-- Page Content -->
-      <div class="container">
-
+	  
+      <div class="container" >
+		
         <!-- Jumbotron Header -->
-        <header class="jumbotron my-4">
+        <header class="jumbotron my-4" >
+		
           <h1 class="display-3">A Warm Welcome!</h1>
           <p class="lead">Chào mừng bạn đến với website tuyển dụng IT hàng đầu Việt Nam</p>
+		  
           <a href="/job" class="btn btn-primary btn-lg">Việc làm mới nhất</a>
+		
         </header>
 
         <!-- Page Features -->
-        <div class="row text-center">
-
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-              <img class="card-img-top" src="<%= data[0].imgSrc%>" alt="">
-              <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">
-                  <%= data[0].id %>
-                    <%= data[0].name %>
-                </p>
-              </div>
-              <div class="card-footer">
-                <a href="/company/<%=data[0].name%>" class="btn btn-primary">Find Out More!</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-              <img class="card-img-top" src="<%= data[1].imgSrc%>" alt="">
-              <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">
-                  <%= data[1].id %>
-                    <%= data[1].name %>
-                </p>
-              </div>
-              <div class="card-footer">
-                <a href="/company/<%=data[1].name %>" class="btn btn-primary">Find Out More!</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-              <img class="card-img-top" src="<%= data[2].imgSrc%>" alt="">
-              <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">
-                  <%= data[2].id %>
-                    <%= data[2].name %>
-                </p>
-              </div>
-              <div class="card-footer">
-                <a href="/company/<%=data[2].name %>" class="btn btn-primary">Find Out More!</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-              <img class="card-img-top" src="<%= data[3].imgSrc%>" alt="">
-              <div class="card-body">
-                <h4 class="card-title">Card title</h4>
-                <p class="card-text">
-                  <%= data[3].id %>
-                    <%= data[3].name %>
-                </p>
-              </div>
-              <div class="card-footer">
-                <a href="/company/rs<%=data[3].name %>" class="btn btn-primary ">Find Out More!</a>
-              </div>
-            </div>
-          </div>
-
-
-
-          <a href="/company" class="next">See more company &raquo;</a>
-
+		<h1 id="topcompany"><br>TOP COMPANY</h1>
+        <div class="row text-center" >
+		
+				
+				
+				
+				<% for(var i=11; i<19; i++) { %>
+					
+							<script>
+							var html='';
+							html += '<div class="col-lg-3 col-md-6 mb-4">';
+							html += '<div class="card">';
+							html += '<img class="card-img-top" style="margin-bottom:auto;margin-top:auto;margin-left:auto;margin-right:auto;" src="<%=data[i].imgSrc%>" alt="">';
+							html += '<div class="card-body">';
+							html += ' <h4 class="card-title"><%=data[i].name%></h4>';
+							html += '<p class="card-text">';
+							html += '<%=data[i].location%>';
+							html += '</p>';
+							html += '</div>';
+							html += '<div class="card-footer">';
+							html += '<a href="/company/<%=data[i].name%>" class="btn btn-primary">Find Out More!</a>';
+							html += '</div>';
+							html += '</div>';
+							html += '</div>';
+							document.write(html);
+							</script>
+					
+				<% } %>
+				
+						
+						
+						
+			
+					
+		
+		
+		<a href="/company" class="next">See more company &raquo;</a>
+		
         </div>
         <!-- /.row -->
 

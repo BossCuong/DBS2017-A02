@@ -1,7 +1,7 @@
 //---------------------------------company page call-------------------------------
 exports.company = function (req, res) {
     var message = '';
-    var sql = "SELECT * FROM company";
+    var sql = "select * from company";
     db.query(sql, function (err, result) {
         if (err) throw err;
         else {
@@ -15,27 +15,75 @@ exports.company = function (req, res) {
 
 //--------------------------------render company profile--------------------------------
 exports.profile = function (req, res) {
-
+	var companyName = req.params.companyName;
     //Get request parameter
-    var companyName = req.params.companyName;
+    
 
-    //SQL query
-    var sql = SqlString.format('CALL getCompanyInfo(?)', [companyName]);
-
+    //SQL query lay thong tin company
+    var sql = SqlString.format("SELECT * FROM company WHERE name = ?", [companyName]);
+	
     db.query(sql, (err, result) => {
         if (err) throw err;
 
         if (result.length > 0) {
-            res.render('company_profile.ejs', {
-                data: result
-            });
+			
+			req.session.companyId=result[0].id;
+            var starAVG=null; //rate TB
+			//tinh rate tb
+			sql=SqlString.format("SELECT avg(star) as avg FROM  danhgia where companyID=?  ", [req.session.companyId]);
+			db.query(sql, function (err,avg) {
+				if (err) throw err;
+				else{					
+						 starAVG=avg;
+				}
+			});	 
+			
+			//lay vai bai danh gia show len
+			sql=SqlString.format("SELECT * FROM  danhgia where companyID=?  ", [req.session.companyId]);
+			db.query(sql, function (err,danhgia) {
+				if (err) throw err;
+				else{	//sau khi load data,   load rate, cap nhap rate				
+						res.render('company_profile.ejs', {data:result,star:starAVG,danhgia:danhgia});								
+				}
+			});	
+			
+			
+			
+			
+			
+			
+			
+			
         } else res.send('Page not found');
     });
+	
+	
+	//rate star
+	if (req.method == "POST") { 
+	    var post = req.body;		
+        var cmt	=post.comment.substring(1, post.comment.length );
+		var star=post.comment[0];		
+		if(star!=0){ 
+			console.log('user dang danh gia '+star+'sao');
+			console.log('user dang cmt '+cmt);
+			//tien hanh ghi lai danh gia vao bds, insert vao bang danh gia		
+			sql=SqlString.format("insert into danhgia(star,cmt,userID,companyID)  values(?,?,?,?);",[star, cmt,req.session.userId,req.session.companyId]);
+		
+			db.query(sql, function (err) {
+				if (err) throw err;
+				else{					
+					console.log('Danh gia cong ty thanh cong');
+									
+				}
+			});			
+		}		
+	}
+	
 };
 
 exports.db = function (req, res) {
     // load database len 
-    var sql = "SELECT * FROM company";
+    var sql = "select * from company";
     db.query(sql, function (err, result) {
         if (err) throw err;
         else {
