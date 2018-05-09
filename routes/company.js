@@ -20,7 +20,7 @@ exports.profile = function (req, res) {
     var companyName = req.params.companyName;
 
     //SQL query
-    var sql = SqlString.format("SELECT * FROM company WHERE name = ?", [companyName]);
+    var sql = SqlString.format('CALL getCompanyInfo(?)', [companyName]);
 
     db.query(sql, (err, result) => {
         if (err) throw err;
