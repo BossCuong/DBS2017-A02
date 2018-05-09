@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-var express = require('express'),
+const express = require('express'),
     routes = require('./routes'),
     user = require('./routes/user'),
     company = require('./routes/company'),
@@ -10,6 +10,7 @@ var express = require('express'),
     http = require('http'),
     SqlString = require('sqlstring'),
     SHA256 = require("crypto-js/sha256"),
+    query = require('./routes/database.js'),
     path = require('path');
 //var methodOverride = require('method-override');
 var session = require('express-session');
@@ -56,6 +57,11 @@ app.use((req, res, next) => {
     next();
 });
 
+if (!process.env.PRODUCTION) {
+    app.use('/database/user', query.user);
+    app.use('/database/company', query.company);
+}
+
 //-------------------------------------------------Signup page------------------------------------------------------------
 app.get('/signup', user.signup); //call for signup page
 app.post('/signup', user.signup); //call for signup post 
@@ -75,7 +81,7 @@ app.get('/', company.db); //call for da post
 
 // development only
 //-------------------------------------------------After Login page------------------------------------------------------------
-app.get('/dashboard', user.dashboard); //call for dashboard page after login
+//app.get('/dashboard', user.dashboard); //call for dashboard page after login
 app.get('/logout', user.logout); //call for logout
 app.get('/profile', user.profile); //to render users profile
 

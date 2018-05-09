@@ -1,7 +1,7 @@
 //---------------------------------company page call-------------------------------
 exports.company = function (req, res) {
     var message = '';
-    var sql = "select * from company";
+    var sql = "SELECT * FROM company";
     db.query(sql, function (err, result) {
         if (err) throw err;
         else {
@@ -35,7 +35,7 @@ exports.profile = function (req, res) {
 
 exports.db = function (req, res) {
     // load database len 
-    var sql = "select * from company";
+    var sql = "SELECT * FROM company";
     db.query(sql, function (err, result) {
         if (err) throw err;
         else {

@@ -1,4 +1,3 @@
-use new_schema;
 CREATE TABLE IF NOT EXISTS company(
    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
    name VARCHAR(100) NOT NULL UNIQUE,
@@ -135,7 +134,7 @@ CREATE TABLE IF NOT EXISTS danhgia(
 insert into skill(name)  
 values('Java');
 insert into skill(name)  
-values('Javascrip');
+values('Javascript');
 insert into skill(name)  
 values('C++');
 insert into skill(name)  
@@ -158,8 +157,7 @@ values('Tang like',1000);
 
 insert into post(tieuDe, noiDung,datePost,idCompany)  
 values('10 Java/python Devs (SQL, HTML5/CSS) ~$1200','Lập trình trong các dự án gia công phần mềm cho khách hàng Nhật sử dụng ngôn ngữ Java hoặc PHP
-Tham gia các công đoạn tìm hiểu yêu cầu, phân tích, thiết kế, nghiên cứu công nghệ khi được phân công.
-Tham gia quản lý hay đào tạo nhóm nếu có khả năng phù hợp','2018-05-06',1);
+Tham gia các công đoạn tìm hiểu yêu cầu, phân tích, thiết kế, nghiên cứu công nghệ khi được phân công.Tham gia quản lý hay đào tạo nhóm nếu có khả năng phù hợp','2018-05-06',1);
 insert into post(tieuDe, noiDung,datePost,idCompany)  
 values('[Up to $1200] 05 Java Devs (Spring, MVC)','Có tối thiểu từ 2 năm kinh nghiệm lập trình Java Web, Java Core
 Có kinh nghiệm lập trình với các framework: SpingMVC, MyBatis, Hibernate
