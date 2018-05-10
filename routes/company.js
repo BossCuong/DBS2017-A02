@@ -29,6 +29,7 @@ exports.profile = function (req, res) {
 			
 			req.session.companyId=result[0].id;
             var starAVG=null; //rate TB
+			
 			//tinh rate tb
 			sql=SqlString.format("SELECT avg(star) as avg FROM  danhgia where companyID=?  ", [req.session.companyId]);
 			db.query(sql, function (err,avg) {
@@ -36,14 +37,25 @@ exports.profile = function (req, res) {
 				else{					
 						 starAVG=avg;
 				}
-			});	 
+			});
+			
+			var Post;
+			//Lay vai bai dang moi nhat dua len profile
+			sql=SqlString.format("SELECT  * from post where idCompany=? order by id desc;", [req.session.companyId]);
+			db.query(sql, function (err,post) {
+				if (err) throw err;
+				else{	Post=post;				
+						console.log('get post of company thanh cong');
+						console.log(post.length);
+				}
+			});	
 			
 			//lay vai bai danh gia show len
 			sql=SqlString.format("SELECT * FROM  danhgia where companyID=?  ", [req.session.companyId]);
 			db.query(sql, function (err,danhgia) {
 				if (err) throw err;
 				else{	//sau khi load data,   load rate, cap nhap rate				
-						res.render('company_profile.ejs', {data:result,star:starAVG,danhgia:danhgia});								
+						res.render('company_profile.ejs', {data:result,star:starAVG,danhgia:danhgia,post:Post});								
 				}
 			});	
 			

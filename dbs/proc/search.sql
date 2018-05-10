@@ -7,9 +7,10 @@ BEGIN
 	IF CHARACTER_LENGTH(keyword) = 0 THEN
 		select tieuDe,noiDung,datePost,imgSrc,(select avg(star) from danhgia where danhgia.companyID=company.id )as star
 		from post,company 
-		where company.id=post.idCompany; 
+		where company.id=post.idCompany
+        order by post.id; 
 	ELSE
-		SELECT tieuDe,noiDung,datePost,imgSrc (select avg(star) from danhgia where danhgia.companyID=company.id )as star
+		SELECT tieuDe,noiDung,datePost,imgSrc, (select avg(star) from danhgia where danhgia.companyID=company.id )as star
 		from post,company
 		WHERE company.id=post.idCompany 
 		and post.id in 
@@ -17,7 +18,8 @@ BEGIN
 		WHERE 
 		post.tieuDe like keyword or post.noidung like keyword or post.id in 
 		(SELECT id FROM company
-		WHERE name like keyword)); 
+		WHERE name like keyword))
+        order by post.id; 
     END IF;
 END 
 //
