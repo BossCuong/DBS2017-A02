@@ -135,7 +135,34 @@ Constraint FOREIGN KEY (postID) REFERENCES post(id)
 
 
 
--- coppy toi day thoi nha, import csv cho company roi moi insert
+
+-- import company ne hoac import tu csv neu muon
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('1', 'Acb', '2366329930', '68483 Roxbury Plaza', 'atoomer0@thetimes.co.uk', '1siR3DFJ', '2017-09-02', '9436692137', 'Acb.com', '953 Melby Plaza', 'Monday - Friday', '/image/Acb.png', '0');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('2', 'Dek', '2528280337', '7 Mariners Cove Lane', 'hsextone1@ocn.ne.jp', 'uCQNl4x7kQkU', '2015-08-16', '0167287796', 'Dek.com', '2321 Carioca Crossing', 'Monday - Friday', '/image/Dek.jpg', '0');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('3', 'Evolable', '8945171161', '24108 Karstens Hill', 'atutton2@mit.edu', 'vSwVVEKYvf', '2014-01-23', '5865157833', 'Evolable.com', '85 David Trail', 'Monday - Friday', '/image/Evolable.png', '0');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('4', 'FPT', '9161952066', '51034 Messerschmidt Junction', 'hkneath3@gov.uk', '6Ndwxv8', '2015-08-10', '9519313486', 'FPT.com', '483 Ohio Court', 'Monday - Friday', '/image/FPT.png', '1');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('5', 'Fram', '9303638212', '02509 Holy Cross Place', 'mpeever4@wiley.com', 'bAw5KO', '2013-07-02', '4591111679', 'Fram.com', '74631 Hudson Road', 'Monday - Friday', '/image/Fram.png', '1');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('6', 'Gotadi', '4989318926', '746 Rockefeller Point', 'pdebrick5@sciencedirect.com', 'FcJqqBX', '2015-10-09', '4274985806', 'Gotadi.com', '923 Division Road', 'Monday - Friday', '/image/Gotadi.png', '0');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('7', 'Intec', '9132615549', '6952 Stephen Court', 'rrissom6@yellowbook.com', 'hVrYMlhZejM', '2018-01-27', '8721311242', 'Intec.com', '57 Amoth Way', 'Monday - Friday', '/image/Intec.jpg', '1');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('8', 'VNG', '3681854206', '2804 Swallow Hill', 'sculley7@livejournal.com', 'CONqdSAfHCi', '2014-10-18', '5390110617', 'VNG.com', '26 Coolidge Terrace', 'Monday - Friday', '/image/Zoomcast.png', '1');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('9', 'Knorex', '5633150582', '07250 Upham Drive', 'dlivoir8@mayoclinic.com', 'IqylIuuPCet3', '2016-09-06', '5046391260', 'Knorex.com', '310 Moose Center', 'Monday - Friday', '/image/Knorex.png', '1');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('10', 'KMS', '8606186769', '9 Namekagon Pass', 'cmalek9@yellowpages.com', 'bmxSYuKgA', '2017-11-21', '0194577503', 'KMS.com', '4 Dexter Circle', 'Monday - Friday', '/image/KMS.png', '1');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('11', 'LG', '9447807815', '6574 Hintze Crossing', 'jcastelleta@businesswire.com', '6XdIUe', '2014-07-15', '1811263232', 'LG.com', '43 Stuart Drive', 'Monday - Friday', '/image/LG.png', '0');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('12', 'LHV', '8797445919', '2 Prairie Rose Junction', 'tkennetb@va.gov', 'PIbaleJ1PrP', '2017-10-21', '8115508047', 'LHV.com', '666 Buell Place', 'Monday - Friday', '/image/LHV.jpg', '0');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('13', 'Misfit', '8426360037', '82655 Russell Court', 'nverrillc@networkadvertising.org', 'oHxSFZnuW8', '2017-07-21', '7268033451', 'Misfit.com', '67 Amoth Circle', 'Monday - Friday', '/image/Misfit.jpg', '0');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('14', 'Momo', '9528855375', '36196 John Wall Parkway', 'pgoftond@cnn.com', '2jg6kcRWpD', '2017-07-17', '8907573824', 'Momo.com', '8006 Mandrake Parkway', 'Monday - Friday', '/image/Momo.png', '0');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('15', 'Moso', '7136269060', '725 Veith Lane', 'esamuele@ameblo.jp', 'RsfMwldP6UC', '2017-03-09', '4548439544', 'Moso.com', '17 Atwood Trail', 'Monday - Friday', '/image/Moso.png', '1');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('16', 'Ruby', '6512282943', '8075 Clyde Gallagher Pass', 'iwoosterf@ezinearticles.com', '0DJQ9F', '2015-10-20', '5044923060', 'Ruby.com', '42791 Atwood Terrace', 'Monday - Friday', '/image/Ruby.jpg', '1');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('17', 'Scout', '6891339401', '67164 Holmberg Center', 'kstledgerg@reference.com', 'ChdCTN4rRk', '2014-05-18', '7472287520', 'Scout.com', '4393 Oakridge Point', 'Monday - Friday', '/image/Scout.png', '0');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('18', 'Toshiba', '4435841908', '1512 Iowa Pass', 'spearsonh@yale.edu', 'UqOA0K', '2017-07-28', '4137057354', 'Toshiba.com', '16981 Becker Center', 'Monday - Friday', '/image/Toshiba.jpg', '1');
+INSERT INTO `company` (`id`, `name`, `phone`, `adress`, `email`, `pass`, `dateDK`, `mst`, `web`, `location`, `ngaylamviec`, `imgSrc`, `dometicFlag`) VALUES ('19', 'Trg', '9897168888', '184 Hermina Court', 'rkieri@bbb.org', 'vBoPZT3af', '2014-04-27', '6752625387', 'Trg.com', '99533 Sunfield Parkway', 'Monday - Friday', '/image/Trg.png', '0');
+
+
+
+
+
+
+
 
 insert into skill(name)  
 values('Java');
