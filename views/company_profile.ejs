@@ -1,22 +1,47 @@
-<!DOCTYPE html>
-<html>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<%- include header %>
+<%- include navi %>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-  html,
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+html,body,h1,h2,h3,h4,h5,h6 {
     font-family: "Roboto", sans-serif
-  }
+}
+.w3-w3-container {
+    position: absolute;
+    bottom: 0;
+}
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.fa-star
+{
+font-size:48px;
+}
+#oneStar:hover,#twoStar:hover,#threeStar:hover,#fourStar:hover,#fiveStar:hover
+{color: orange;}
+.button:hover
+{
+	background-color: gray;
+}
+.button {
+    background-color: green; 
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;	
+}
+#your-rate{display:none;}
 </style>
 
 <body class="w3-light-grey">
@@ -32,48 +57,182 @@
 
         <div class="w3-white w3-text-grey w3-card-4">
           <div class="w3-display-container">
-            <img src="<%= data[0].srcImg %>" style="width:100%" alt="Avatar">
-            <div class="w3-display-bottomleft w3-container w3-text-black">
-              <h2>
-                <%= data[0].srcImg %>
-              </h2>
-            </div>
+            
+			<div class="w3-card" style="width:100%">
+			<img src="<%=data[0].imgSrc%>" alt="Person" style="width:100%">
+			<div class="w3-container">
+			<h1 style="text-align: center;" ><font style="color:grey"><b><hr ><%=data[0].name%> company</b></font></h1>
+			</div>
+			</div>
+           
           </div>
           <div class="w3-container">
-            <p>
-              <i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Designer</p>
-            <p>
-              <i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>London, UK</p>
-            <p>
-              <i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>ex@mail.com</p>
-            <p>
-              <i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1224435534</p>
-            <hr>
+            
 
+			<p class="w3-large"><br>
+              <b>
+                <i class="fa fa-calendar fa-fw w3-margin-right w3-text-teal"></i><%= data[0].ngaylamviec %></b>
+            </p>
+			<p class="w3-large">
+              <b>
+                <i class="fa fa-map-marker fa-fw w3-margin-right w3-text-teal"></i><%= data[0].location %></b>
+            </p>
+			<p class="w3-large">
+              <b>
+                <i class="fa fa-envelope fa-fw w3-margin-right w3-text-teal"></i><%= data[0].email %></b>
+            </p>
+			<p class="w3-large">
+              <b>
+                <i class="fa fa-phone fa-fw w3-margin-right w3-text-teal"></i><%= data[0].phone %></b>
+            </p>
             <p class="w3-large">
               <b>
-                <i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b>
+                <i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>More</b>
             </p>
-            <p>Adobe Photoshop</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
-            </div>
-            <p>Photography</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
-                <div class="w3-center w3-text-white">80%</div>
-              </div>
-            </div>
-            <p>Illustrator</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%</div>
-            </div>
-            <p>Media</p>
-            <div class="w3-light-grey w3-round-xlarge w3-small">
-              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
-            </div>
-            <br>
+           
+			
+			
 
+<body>
+
+<h2>Company Rating</h2>
+<span>&nbsp;&nbsp;</span>
+<span  id="one" class="fa fa-star "  ></span>
+<span  id="two" class="fa fa-star "  ></span>
+<span  id="three" class="fa fa-star"  ></span>
+<span  id="four" class="fa fa-star"  ></span>
+<span  id="five" class="fa fa-star"  ></span>
+<span ><font id="tb" size="8" color="orange"> &nbsp;<%=star[0].avg%></font></span>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<input id="startRate" class="button"  type="submit" value="Rating this company." onclick="document.getElementById('your-rate').style.display='block'" alt="rate"></p>
+<script>
+function show(num)
+{
+    if(num<2){
+        document.getElementById("one").style.color = "orange";
+        document.getElementById("two").style.color = "black";
+        document.getElementById("three").style.color = "black";
+        document.getElementById("four").style.color = "black";
+        document.getElementById("five").style.color = "black";
+      }
+     else if(num<3||num==2){
+        document.getElementById("one").style.color = "orange";
+        document.getElementById("two").style.color = "orange";
+        document.getElementById("three").style.color = "black";
+        document.getElementById("four").style.color = "black";
+        document.getElementById("five").style.color = "black";
+     }
+     else if(num<4||num==3){
+        document.getElementById("one").style.color = "orange";
+        document.getElementById("three").style.color = "orange";
+        document.getElementById("two").style.color = "orange";
+        document.getElementById("four").style.color = "black";
+        document.getElementById("five").style.color = "black";
+       }
+    else  if(num<5||num==4){
+        document.getElementById("one").style.color = "orange";
+        document.getElementById("three").style.color = "orange";
+        document.getElementById("two").style.color = "orange";
+        document.getElementById("four").style.color = "orange";
+        document.getElementById("five").style.color = "black";
+    } else if(num==5){
+    	document.getElementById("one").style.color = "orange";
+        document.getElementById("three").style.color = "orange";
+        document.getElementById("two").style.color = "orange";
+        document.getElementById("four").style.color = "orange";
+        document.getElementById("five").style.color = "orange";
+		}
+		document.getElementById("tb").innerHTML='&nbsp;'+Math.round(num * 100) / 100;
+}
+//chua co ai danh gia
+if('<%=star[0].avg%>'=='')document.getElementById("tb").innerHTML='&nbsp;0';
+else
+{		
+		show(parseFloat('<%=star[0].avg%>'));
+}
+</script>
+
+
+<div id="your-rate">
+<h2>Your Rating</h2>
+<form method="post" action="/company/<%=data[0].name%>">
+<span>&nbsp;&nbsp;</span>
+<span  name="one" id="oneStar" class="fa fa-star " onclick="showStar(1)" value="1" ></span>
+<span name="two" id="twoStar" class="fa fa-star " onclick="showStar(2)" value="2" ></span>
+<span name="three" id="threeStar" class="fa fa-star" onclick="showStar(3)" value="3" ></span>
+<span name="four" id="fourStar" class="fa fa-star" onclick="showStar(4)" value="4" ></span>
+<span name="five" id="fiveStar" class="fa fa-star" onclick="showStar(5)" value="5" ></span>
+<br>
+<span id="select" name="select"></span>
+<br>
+<textarea style="width:90%;height:150px;" placeholder="Viết bình luận..." type="text" name="comment" id='comment'></textarea>
+<input id="rate" class="button"  name="rateBtn" type="submit" value="Gửi." onclick="load();" alt="rate">
+</form>
+</div>
+<script>
+var star=0;var select='';
+function load()
+{	
+	
+	// comment có dạng 1<cmt> 2<cmt>  
+	var cmt=document.getElementById("comment").value;
+	document.getElementById("comment").value = star+cmt;
+	window.location.href='/company/<%=data[0].name%>';
+	
+}
+function showStar(num)
+{	star=num;
+	select='<br><font color="blue">You will rate '+num+' star.<br></font>';
+	document.getElementById('select').innerHTML='<br><font color="blue">You will rate '+num+' star.<br></font>';      
+	switch(num) {
+    case 1:
+        document.getElementById("oneStar").style.color = "orange";
+        document.getElementById("twoStar").style.color = "black";
+        document.getElementById("threeStar").style.color = "black";
+        document.getElementById("fourStar").style.color = "black";
+        document.getElementById("fiveStar").style.color = "black";
+        break;
+    case 2:
+        document.getElementById("oneStar").style.color = "orange";
+        document.getElementById("twoStar").style.color = "orange";
+        document.getElementById("threeStar").style.color = "black";
+        document.getElementById("fourStar").style.color = "black";
+        document.getElementById("fiveStar").style.color = "black";
+        break;
+    case 3:
+        document.getElementById("oneStar").style.color = "orange";
+        document.getElementById("threeStar").style.color = "orange";
+        document.getElementById("twoStar").style.color = "orange";
+        document.getElementById("fourStar").style.color = "black";
+        document.getElementById("fiveStar").style.color = "black";
+        break;
+    case 4:
+        document.getElementById("oneStar").style.color = "orange";
+        document.getElementById("threeStar").style.color = "orange";
+        document.getElementById("twoStar").style.color = "orange";
+        document.getElementById("fourStar").style.color = "orange";
+        document.getElementById("fiveStar").style.color = "black";
+        break;
+    default:
+    	document.getElementById("oneStar").style.color = "orange";
+        document.getElementById("threeStar").style.color = "orange";
+        document.getElementById("twoStar").style.color = "orange";
+        document.getElementById("fourStar").style.color = "orange";
+        document.getElementById("fiveStar").style.color = "orange";
+	}
+}
+
+</script>
+			
+            
+            <p class="w3-large">
+              <b>
+                <i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Number of employees</b>
+            </p>			
+            <div class="w3-light-grey w3-round-xlarge w3-small">
+              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">1280</div>
+            </div>
+            
+			<br>
             <p class="w3-large w3-text-theme">
               <b>
                 <i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b>
@@ -86,7 +245,7 @@
             <div class="w3-light-grey w3-round-xlarge">
               <div class="w3-round-xlarge w3-teal" style="height:24px;width:55%"></div>
             </div>
-            <p>German</p>
+            <p>Vienamese</p>
             <div class="w3-light-grey w3-round-xlarge">
               <div class="w3-round-xlarge w3-teal" style="height:24px;width:25%"></div>
             </div>
@@ -103,70 +262,91 @@
 
         <div class="w3-container w3-card w3-white w3-margin-bottom">
           <h2 class="w3-text-grey w3-padding-16">
-            <i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
+            <i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>History of company</h2>
           <div class="w3-container">
             <h5 class="w3-opacity">
-              <b>Front End Developer / w3schools.com</b>
+              <b>Founded company <%=data[0].name%></b>
             </h5>
             <h6 class="w3-text-teal">
-              <i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 -
+              <i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 1998 -
               <span class="w3-tag w3-teal w3-round">Current</span>
             </h6>
-            <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt
-              hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+            <p> Company <%=data[0].name%> in Jan 1998. 
+			Up to now, Company have had over 2000 employees both in Vienamese and Foregin.</p>
             <hr>
           </div>
           <div class="w3-container">
             <h5 class="w3-opacity">
-              <b>Web Developer / something.com</b>
+              <b>Top successful company</b>
             </h5>
             <h6 class="w3-text-teal">
               <i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
-            <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt
-              hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+            <p>This is one of the most successful company in Vienamese with many products and project in the world. </p>
             <hr>
           </div>
           <div class="w3-container">
             <h5 class="w3-opacity">
-              <b>Graphic Designer / designsomething.com</b>
+              <b>Recruit employees have Multi skills </b>
             </h5>
             <h6 class="w3-text-teal">
-              <i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+              <i class="fa fa-calendar fa-fw w3-margin-right"></i>Up to 2018 we have recruited...</h6>
+            <p> JavaScript, C#, .NET, Linux, System Admin, UI-UX, Html, nodejs, ... </p>
             <br>
           </div>
         </div>
 
         <div class="w3-container w3-card w3-white">
           <h2 class="w3-text-grey w3-padding-16">
-            <i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
-          <div class="w3-container">
-            <h5 class="w3-opacity">
-              <b>W3Schools.com</b>
-            </h5>
-            <h6 class="w3-text-teal">
-              <i class="fa fa-calendar fa-fw w3-margin-right"></i>Forever</h6>
-            <p>Web Development! All I need to know in one place</p>
-            <hr>
-          </div>
-          <div class="w3-container">
-            <h5 class="w3-opacity">
-              <b>London Business School</b>
-            </h5>
-            <h6 class="w3-text-teal">
-              <i class="fa fa-calendar fa-fw w3-margin-right"></i>2013 - 2015</h6>
-            <p>Master Degree</p>
-            <hr>
-          </div>
-          <div class="w3-container">
-            <h5 class="w3-opacity">
-              <b>School of Coding</b>
-            </h5>
-            <h6 class="w3-text-teal">
-              <i class="fa fa-calendar fa-fw w3-margin-right"></i>2010 - 2013</h6>
-            <p>Bachelor Degree</p>
-            <br>
-          </div>
+            <i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>New Job for you</h2>
+			
+			<% var num=post.length; if(num>2)num=2;
+			for(var i=0; i<num; i++) { %>
+							
+							<script>
+							//hien thi vai bai post gan nhat cua cong ty
+							// in ra cac post
+							
+							var html = '';
+							html += '<p>' + '<div class="w3-container">';
+							html += '<div class="w3-card-4" style="width:80%">';
+							html += '<header class="w3-container w3-light-grey">';
+							html += '<h3><%=post[i].tieuDe%></h3>';
+							html += '</header>';
+							html += '<div class="w3-container">';
+							html += '<hr>';
+							html += '<img src="<%=data[0].imgSrc%>" alt="logo" class="w3-left w3-circle w3-margin-right" style="width:60px">';
+							
+							var noidung='<%=post[i].noiDung%>';
+							noidung=noidung.substring(0, 140);
+							noidung+=' ...';
+							
+							html +='<p><font size="4" face="Verdana">'+noidung+'</font></p><br>';
+							
+							var timepost = Date.parse('<%=post[i].datePost%>');			//mysql định dạng Sun May 06 2018 00:00:00 GMT+0700 (SE Asia Standard Time)	
+							var current = new Date();
+							var day=Math.floor((current-timepost)/86400000);
+							var hour=Math.floor((current-timepost-86400000*day)/3600000);
+							if(day==0)out=hour+' giờ trước';
+							else	var out=day+' ngày '+hour+' giờ trước';
+							
+							html += '<div><font face="Comic Sans MS">';
+		
+							html += '<span style="float:right;color:blue;" >'+out+'</span>';
+							html += '</font></div>';
+							html += '<br></div>';
+							html += '<button class="w3-button w3-block w3-dark-grey"><font size="4"><b>+ Detail</b></font></button>';
+							html += '</div>';
+							html += '</div>';
+							html += '</p>';
+						
+							document.write(html);
+							document.write('<br>');							
+							</script>
+				
+				<% } %>
+		  
+          
+          
         </div>
 
         <!-- End Right Column -->
@@ -178,19 +358,6 @@
     <!-- End Page Container -->
   </div>
 
-  <footer class="w3-container w3-teal w3-center w3-margin-top">
-    <p>Find me on social media.</p>
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-    <p>Powered by
-      <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
-    </p>
-  </footer>
 
-</body>
 
-</html>
+  <%- include footer %>

@@ -1,12 +1,13 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <%- include header %>
 	<%- include navi %>
 		<!-- bar login sign up ... -->
 
-		<body>
+		<body >
 
 			<!-- Page Content -->
-			<div class="container" style="min-height:500px;">
+			<div class="container" style="min-height:535px;">
 
 
 				<h1>
@@ -14,33 +15,54 @@
 					<br>
 				</h1>
 
-				<script>
-					function create() {
-						var html = '';
-						html += '<p>' + '<div class="w3-container">';
-						html += '<div class="w3-card-4" style="width:80%">';
-						html += '<header class="w3-container w3-light-grey">';
-						html += '<h3>John Doe</h3>';
-						html += '</header>';
-						html += '<div class="w3-container">';
-						html += '<hr>';
-						html += '<img src="image/FPT.png" alt="logo" class="w3-left w3-circle w3-margin-right" style="width:60px">';
-						html +=
-							'<p><%= data[0].id%> <%= data[0].noidung%> <%= data.length%> (load từ databasse)database có mấy row thì hiển thị mấy post</p><br>';
-						html += '</div>';
-						html += '<button class="w3-button w3-block w3-dark-grey">+ Chi tiết</button>';
-						html += '</div>';
-						html += '</div>';
-						html += '</p>';
-						return html;
-					}
-					var count = <%=data.length%>;
-
-					for (var i = 0; i < count; i++)
-						document.write(create());
-				</script>
-
-
+				
+		
+				<% for(var i=0; i<data.length; i++) { %>
+							
+							<script>
+							// in ra cac post
+							document.write('<br>');
+							var html = '';
+							html += '<p>' + '<div class="w3-container">';
+							html += '<div class="w3-card-4" style="width:80%">';
+							html += '<header class="w3-container w3-light-grey">';
+							html += '<h3><%=data[i].tieuDe%></h3>';
+							html += '</header>';
+							html += '<div class="w3-container">';
+							html += '<hr>';
+							html += '<img src="<%=data[i].imgSrc%>" alt="logo" class="w3-left w3-circle w3-margin-right" style="width:60px">';
+							
+							var noidung='<%=data[i].noiDung%>';
+							noidung=noidung.substring(0, 140);
+							noidung+=' ...';
+							
+							html +='<p><font size="4" face="Verdana">'+noidung+'</font></p><br>';
+							
+							var timepost = Date.parse('<%=data[i].datePost%>');			//mysql định dạng Sun May 06 2018 00:00:00 GMT+0700 (SE Asia Standard Time)	
+							var current = new Date();
+							var day=Math.floor((current-timepost)/86400000);
+							var hour=Math.floor((current-timepost-86400000*day)/3600000);
+							if(day==0)out=hour+' giờ trước';
+							else	var out=day+' ngày '+hour+' giờ trước';
+							
+							html += '<div><font face="Comic Sans MS">&emsp;&emsp;&emsp;&emsp;&emsp;';
+							var numStar='';
+							if('<%=data[i].star%>'=='')numStar='0';
+							else numStar=Math.round(parseFloat('<%=data[i].star%>') * 100) / 100;
+							html += '<span style="text-align:left;color:orange;font-size:30px;"class="fa fa-star">&nbsp;'+numStar+'</span><span style="float:right;color:blue;" >'+out+'</span>';
+							html += '</font></div>';
+							html += '<br></div>';
+							html += '<button class="w3-button w3-block w3-dark-grey"><font size="4"><b>+ Detail</b></font></button>';
+							html += '</div>';
+							html += '</div>';
+							html += '</p>';
+						
+							document.write(html);						
+							</script>
+				
+				<% } %>
+				
+				
 
 
 

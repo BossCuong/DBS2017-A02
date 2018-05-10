@@ -1,50 +1,67 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <%- include header %>
 <%- include navi %><!-- bar login sign up ... -->
   <body >
 
     <!-- Page Content -->
-    <div class="container" style="min-height:420px;">
+    <div class="container" style="min-height:500px;">
 
       <!-- Jumbotron Header -->
-      <header class="jumbotron my-4" ">
-        <h1 class="display-3">Kết quả tìm kiếm "<%=keyword%>"  </h1>
-        <p class="lead"><h3> Có 100 công việc dành cho bạn</h3></p>
+      <header class="jumbotron my-4" style="width:900px;">
+        <h1 class="display-3"> <%=kqText%>  </h1>
+        <p class="lead"><h3><%=kqJobText%></h3></p>
         
       </header>
 
       <!-- Page Features -->
-		<p>
-		<div class="w3-container">	
-		<div class="w3-card-4" style="width:80%">
-			<header class="w3-container w3-light-grey">
-			<h3>John Doe</h3>
-			</header>
-			<div class="w3-container"> 
-			<hr>
-			<img src="image/FPT.png" alt="logo" class="w3-left w3-circle w3-margin-right" style="width:60px">
-			<p><%=data[0].id%> load từ data base nè</p><br>
-			</div>
-			<button class="w3-button w3-block w3-dark-grey">+ Chi tiết</button>
-		</div>
-		</div>
-		</p>
 		
-		<p>
-		<div class="w3-container">	
-		<div class="w3-card-4" style="width:80%">
-			<header class="w3-container w3-light-grey">
-			<h3>John Doe</h3>
-			</header>
-			<div class="w3-container"> 
-			<hr>
-			<img src="image/FPT.png" alt="logo" class="w3-left w3-circle w3-margin-right" style="width:60px">
-			<p>CEO at Mighty Schools. Marketing anhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhd Advertising. Seeking a new job and new opportunities.</p><br>
-			</div>
-			<button class="w3-button w3-block w3-dark-grey">+ Chi tiết</button>
-		</div>
-		</div>
-		</p>
+		
+		<% for(var i=0; i<data[0].length; i++) { %>
+							
+							<script>
+							// in ra cac post
+							document.write('<br>');
+							var html = '';
+							html += '<p>' + '<div class="w3-container">';
+							html += '<div class="w3-card-4" style="width:80%">';
+							html += '<header class="w3-container w3-light-grey">';
+							html += '<h3><%=data[0][i].tieuDe%></h3>';
+							html += '</header>';
+							html += '<div class="w3-container">';
+							html += '<hr>';
+							html += '<img src="<%=data[0][i].imgSrc%>" alt="logo" class="w3-left w3-circle w3-margin-right" style="width:60px">';
+							
+							var noidung='<%=data[0][i].noiDung%>';
+							noidung=noidung.substring(0, 140);
+							noidung+=' ...';
+							
+							html +='<p><font size="4" face="Verdana">'+noidung+'</font></p><br>';
+							
+							var timepost = Date.parse('<%=data[0][i].datePost%>');			//mysql định dạng Sun May 06 2018 00:00:00 GMT+0700 (SE Asia Standard Time)	
+							var current = new Date();
+							var day=Math.floor((current-timepost)/86400000);
+							var hour=Math.floor((current-timepost-86400000*day)/3600000);
+							if(day==0)out=hour+' giờ trước';
+							else	var out=day+' ngày '+hour+' giờ trước';
+							
+							html += '<div><font face="Comic Sans MS">&emsp;&emsp;&emsp;&emsp;&emsp;';
+							var numStar='';
+							if('<%=data[0][i].star%>'=='')numStar='0';
+							else numStar=Math.round(parseFloat('<%=data[0][i].star%>') * 100) / 100;
+							html += '<span style="text-align:left;color:orange;font-size:30px;"class="fa fa-star">&nbsp;'+numStar+'</span><span style="float:right;color:blue;" >'+out+'</span>';
+							html += '</font></div>';
+							html += '<br></div>';
+							html += '<button class="w3-button w3-block w3-dark-grey"><font size="4"><b>+ Detail</b></font></button>';
+							html += '</div>';
+							html += '</div>';
+							html += '</p>';
+						
+							document.write(html);						
+							</script>
+				
+				<% } %>
+		
 
     </div>
     <!-- /.container -->

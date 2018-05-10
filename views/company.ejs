@@ -20,32 +20,28 @@
 				<!-- Page Features -->
 				<div class="row text-center">
 
-					<script>
-						function create() { //co may cong ty in ra bay nhieu block
-							var html = '';
+					<% for(var i=0; i<data.length; i++) { %>
+					
+							<script>
+							var html='';
 							html += '<div class="col-lg-3 col-md-6 mb-4">';
 							html += '<div class="card">';
-							html += '<img class="card-img-top" src="<%= data[0].imgSrc%>" alt="">';
+							html += '<img class="card-img-top" style="margin-bottom:auto;margin-top:auto;margin-left:auto;margin-right:auto;" src="<%=data[i].imgSrc%>" alt="">';
 							html += '<div class="card-body">';
-							html += ' <h4 class="card-title">Card title</h4>';
+							html += ' <h4 class="card-title"><%=data[i].name%></h4>';
 							html += '<p class="card-text">';
-							html += '<%= data[0].id %>';
-							html += '<%= data[0].name %>';
-
+							html += '<%=data[i].location%>';
 							html += '</p>';
 							html += '</div>';
 							html += '<div class="card-footer">';
-							html += '<a href="/company/<%=data[0].name%>" class="btn btn-primary">Find Out More!</a>';
+							html += '<a href="/company/<%=data[i].name%>" class="btn btn-primary">Find Out More!</a>';
 							html += '</div>';
 							html += '</div>';
 							html += '</div>';
-							return html;
-						}
-						var count = <%=data.length%>;
-
-						for (var i = 0; i < 15; i++)
-							document.write(create());
-					</script>
+							document.write(html);
+							</script>
+					
+				<% } %>
 
 
 				</div>

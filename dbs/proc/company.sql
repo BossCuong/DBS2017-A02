@@ -6,7 +6,7 @@ DROP PROCEDURE IF EXISTS `getUserInfo`//
 CREATE PROCEDURE `getCompanyInfo`(
     IN  _companyName  VARCHAR(100))
 BEGIN
-    SELECT * FROM company WHERE name = companyName
+    SELECT * FROM company WHERE name = companyName;
 END;//
 
 DELIMITER ;

@@ -20,8 +20,8 @@ var bodyParser = require("body-parser");
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'redtear0109',
-    database: 'demo'
+    password: 'nguyenhoaidanh',
+    database: 'new_schema'
 });
 
 connection.connect();
@@ -88,6 +88,7 @@ app.get('/profile', user.profile); //to render users profile
 //-------------------------------------------------Company page------------------------------------------------------------
 app.get('/company/:companyName', company.profile); //call for company profile
 app.get('/company', company.company); //call for company list page
+app.post('/company/:companyName', company.profile); //call for company profile
 
 //-------------------------------------------------Search page------------------------------------------------------------
 app.post('/search', search.search);
