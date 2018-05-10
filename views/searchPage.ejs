@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <%- include header %>
 <%- include navi %><!-- bar login sign up ... -->
   <body >
@@ -20,7 +21,7 @@
 							
 							<script>
 							// in ra cac post
-							
+							document.write('<br>');
 							var html = '';
 							html += '<p>' + '<div class="w3-container">';
 							html += '<div class="w3-card-4" style="width:80%">';
@@ -44,8 +45,11 @@
 							if(day==0)out=hour+' giờ trước';
 							else	var out=day+' ngày '+hour+' giờ trước';
 							
-							html += '<div><font face="Comic Sans MS">';
-							html += '<span style="text-align:left;color:orange;" >Sẽ select lấy số sao ở đây :))</span><span style="float:right;color:blue;" >'+out+'</span>';
+							html += '<div><font face="Comic Sans MS">&emsp;&emsp;&emsp;&emsp;&emsp;';
+							var numStar='';
+							if('<%=data[0][i].star%>'=='')numStar='0';
+							else numStar=Math.round(parseFloat('<%=data[0][i].star%>') * 100) / 100;
+							html += '<span style="text-align:left;color:orange;font-size:30px;"class="fa fa-star">&nbsp;'+numStar+'</span><span style="float:right;color:blue;" >'+out+'</span>';
 							html += '</font></div>';
 							html += '<br></div>';
 							html += '<button class="w3-button w3-block w3-dark-grey"><font size="4"><b>+ Detail</b></font></button>';
@@ -56,7 +60,7 @@
 							document.write(html);						
 							</script>
 				
-		<% } %>
+				<% } %>
 		
 
     </div>
