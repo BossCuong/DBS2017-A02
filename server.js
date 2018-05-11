@@ -60,6 +60,7 @@ app.use((req, res, next) => {
 if (!process.env.PRODUCTION) {
     app.use('/database/user', query.user);
     app.use('/database/company', query.company);
+	
 }
 
 //-------------------------------------------------Signup page------------------------------------------------------------
@@ -94,7 +95,8 @@ app.post('/company/:companyName', company.profile); //call for company profile
 app.post('/search', search.search);
 app.get('/search', search.search);
 
-
+app.get('/job/:postId', job.detail); //call for detail page
 app.get('/job', job.job); //call for job page
+app.post('/job/:postId', job.detail); //call for detail page
 //Middleware
 app.listen(8080);

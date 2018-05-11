@@ -17,7 +17,7 @@ exports.company = function (req, res) {
 exports.profile = function (req, res) {
 	var companyName = req.params.companyName;
     //Get request parameter
-    
+    console.log('Dang vao profile cua'+companyName);
 
     //SQL query lay thong tin company
     var sql = SqlString.format("SELECT * FROM company WHERE name = ?", [companyName]);

@@ -315,12 +315,16 @@ function showStar(num)
 							html += '<div class="w3-container">';
 							html += '<hr>';
 							html += '<img src="<%=data[0].imgSrc%>" alt="logo" class="w3-left w3-circle w3-margin-right" style="width:60px">';
-							
+							//định dạng bài đăng ở đây
 							var noidung='<%=post[i].noiDung%>';
-							noidung=noidung.substring(0, 140);
-							noidung+=' ...';
 							
-							html +='<p><font size="4" face="Verdana">'+noidung+'</font></p><br>';
+							
+							html +='<p><font size="4" face="Verdana">'
+							+'Công ty <b><%=data[i].name%></b> cần tuyển <b>100</b> vị trí<br>'
+							+'Lương <b>500$-2000$</b><br>'
+							+'Cụ thể:<br>'+noidung+'<br>'
+							+'Các ứng viên vui lòng Gửi CV về địa chỉ: <b><%=data[i].email%> </b>'
+							+'</font></p><br>';
 							
 							var timepost = Date.parse('<%=post[i].datePost%>');			//mysql định dạng Sun May 06 2018 00:00:00 GMT+0700 (SE Asia Standard Time)	
 							var current = new Date();
@@ -331,10 +335,9 @@ function showStar(num)
 							
 							html += '<div><font face="Comic Sans MS">';
 		
-							html += '<span style="float:right;color:blue;" >'+out+'</span>';
+							html += '<span style="float:right;color:blue;" ><b>'+out+'</b></span>';
 							html += '</font></div>';
 							html += '<br></div>';
-							html += '<button class="w3-button w3-block w3-dark-grey"><font size="4"><b><a style="text-decoration:none" href="/job/<%=post[i].id%>">+ Detail</a></b></font></button>';
 							html += '</div>';
 							html += '</div>';
 							html += '</p>';
