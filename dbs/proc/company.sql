@@ -1,7 +1,7 @@
 DELIMITER //
 
 #--------------------------------------------------------------get company info for company page---------------------------------------------
-DROP PROCEDURE IF EXISTS `getUserInfo`//
+DROP PROCEDURE IF EXISTS `getCompanyInfo`//
 
 CREATE PROCEDURE `getCompanyInfo`(
     IN  _companyName  VARCHAR(100))
