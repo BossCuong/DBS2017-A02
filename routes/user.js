@@ -158,8 +158,9 @@ exports.profile = function (req, res) {
 
     var sql = SqlString.format('call getUserInfo(?)', [userId]);
     db.query(sql, function (err, result) {
+       // console.log(JSON.stringify(result, undefined, 2));
         res.render('profile.ejs', {
-            data: result
+            data: result[0][0]
         });
     });
 };
@@ -171,11 +172,14 @@ exports.editprofile = function (req, res) {
         res.redirect("/login");
         return;
     }
+    if (req.method == "POST") {
 
-    var sql = SqlString.format('call getUserInfo(?)', [userId]);
-    db.query(sql, function (err, results) {
-        res.render('edit_profile.ejs', {
-            data: results
+    } else {
+        var sql = SqlString.format('call getUserInfo(?)', [userId]);
+        db.query(sql, function (err, results) {
+            res.render('edit_profile.ejs', {
+                data: results[0][0]
+            });
         });
-    });
+    }
 };

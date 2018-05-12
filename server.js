@@ -20,8 +20,8 @@ var bodyParser = require("body-parser");
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'nguyenhoaidanh',
-    database: 'new_schema'
+    password: '',
+    database: 'recruitment'
 });
 
 connection.connect();
@@ -60,7 +60,7 @@ app.use((req, res, next) => {
 if (!process.env.PRODUCTION) {
     app.use('/database/user', query.user);
     app.use('/database/company', query.company);
-	
+
 }
 
 //-------------------------------------------------Signup page------------------------------------------------------------
@@ -85,6 +85,8 @@ app.get('/', company.db); //call for da post
 //app.get('/dashboard', user.dashboard); //call for dashboard page after login
 app.get('/logout', user.logout); //call for logout
 app.get('/profile', user.profile); //to render users profile
+app.get('/edit', user.editprofile); //to render users profile
+app.post('/edit', user.editprofile); //to render users profile
 
 //-------------------------------------------------Company page------------------------------------------------------------
 app.get('/company/:companyName', company.profile); //call for company profile
