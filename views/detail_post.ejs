@@ -5,44 +5,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-html,body,h1,h2,h3,h4,h5,h6 {
-    font-family: "Roboto", sans-serif
-}
-.w3-w3-container {
-    position: absolute;
-    bottom: 0;
-}
-.avatar {
-    vertical-align: middle;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-.fa-star
-{
-font-size:48px;
-}
-#oneStar:hover,#twoStar:hover,#threeStar:hover,#fourStar:hover,#fiveStar:hover
-{color: orange;}
-.button:hover
-{
-	background-color: gray;
-}
-.button {
-    background-color: green; 
-    border: none;
-    color: white;
-    padding: 10px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;	
-}
-#your-rate{display:none;}
-</style>
+<link rel="stylesheet" href="/css/rate.css">
+<script type="text/javascript" src="/js/function.js" ></script>
 
 <body class="w3-light-grey">
 
@@ -91,137 +55,70 @@ font-size:48px;
             </p>
            
 			
+			<h2>Company Rating</h2>
+			<span>&nbsp;&nbsp;</span>
+			<span  id="one" class="fa fa-star "  ></span>
+			<span  id="two" class="fa fa-star "  ></span>
+			<span  id="three" class="fa fa-star"  ></span>
+			<span  id="four" class="fa fa-star"  ></span>
+			<span  id="five" class="fa fa-star"  ></span>
+			<span ><font id="tb" size="8" color="orange"> &nbsp;<%=star[0].avg%></font></span>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;<input id="startRate" class="button"  type="submit" value="Rating this company." onclick="document.getElementById('your-rate').style.display='block'" alt="rate"></p>
+
+			<script>
+			//chua co ai danh gia
+			if('<%=star[0].avg%>'=='')document.getElementById("tb").innerHTML='&nbsp;0';
+			else
+			{		
+					show(parseFloat('<%=star[0].avg%>'));
+			}
+			</script>
 			
+			<div class="alert" id="alert">
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+			<strong><%=mess%></strong> 
+			</div>
 
-<body>
+			<script>
+			if('<%=mess%>'=='')document.getElementById('alert').style.display='none';
+			</script>
 
-<h2>Company Rating</h2>
-<span>&nbsp;&nbsp;</span>
-<span  id="one" class="fa fa-star "  ></span>
-<span  id="two" class="fa fa-star "  ></span>
-<span  id="three" class="fa fa-star"  ></span>
-<span  id="four" class="fa fa-star"  ></span>
-<span  id="five" class="fa fa-star"  ></span>
-<span ><font id="tb" size="8" color="orange"> &nbsp;<%=star[0].avg%></font></span>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<input id="startRate" class="button"  type="submit" value="Rating this company." onclick="document.getElementById('your-rate').style.display='block'" alt="rate"></p>
-<script>
-function show(num)
-{
-    if(num<2){
-        document.getElementById("one").style.color = "orange";
-        document.getElementById("two").style.color = "black";
-        document.getElementById("three").style.color = "black";
-        document.getElementById("four").style.color = "black";
-        document.getElementById("five").style.color = "black";
-      }
-     else if(num<3||num==2){
-        document.getElementById("one").style.color = "orange";
-        document.getElementById("two").style.color = "orange";
-        document.getElementById("three").style.color = "black";
-        document.getElementById("four").style.color = "black";
-        document.getElementById("five").style.color = "black";
-     }
-     else if(num<4||num==3){
-        document.getElementById("one").style.color = "orange";
-        document.getElementById("three").style.color = "orange";
-        document.getElementById("two").style.color = "orange";
-        document.getElementById("four").style.color = "black";
-        document.getElementById("five").style.color = "black";
-       }
-    else  if(num<5||num==4){
-        document.getElementById("one").style.color = "orange";
-        document.getElementById("three").style.color = "orange";
-        document.getElementById("two").style.color = "orange";
-        document.getElementById("four").style.color = "orange";
-        document.getElementById("five").style.color = "black";
-    } else if(num==5){
-    	document.getElementById("one").style.color = "orange";
-        document.getElementById("three").style.color = "orange";
-        document.getElementById("two").style.color = "orange";
-        document.getElementById("four").style.color = "orange";
-        document.getElementById("five").style.color = "orange";
-		}
-		document.getElementById("tb").innerHTML='&nbsp;'+Math.round(num * 100) / 100;
-}
-//chua co ai danh gia
-if('<%=star[0].avg%>'=='')document.getElementById("tb").innerHTML='&nbsp;0';
-else
-{		
-		show(parseFloat('<%=star[0].avg%>'));
-}
-</script>
+			<div id="your-rate">
+			<h2>Your Rating</h2>
+			<form method="post" action="/company/<%=data[0].name%>">
+			<span>&nbsp;&nbsp;</span>
+			<span  name="one" id="oneStar" class="fa fa-star " onclick="showStar(1)" value="1" ></span>
+			<span name="two" id="twoStar" class="fa fa-star " onclick="showStar(2)" value="2" ></span>
+			<span name="three" id="threeStar" class="fa fa-star" onclick="showStar(3)" value="3" ></span>
+			<span name="four" id="fourStar" class="fa fa-star" onclick="showStar(4)" value="4" ></span>
+			<span name="five" id="fiveStar" class="fa fa-star" onclick="showStar(5)" value="5" ></span>
+			<br>
+			<span id="select" name="select"></span>
+			<br>
+			<textarea style="width:90%;height:150px;" placeholder="Viết bình luận..." type="text" name="comment" id='comment'></textarea>
+			<input id="rate" class="button"  name="rateBtn" type="submit" value="Gửi." onclick="load();" alt="rate">
+			</form>
+			</div>
 
-
-<div id="your-rate">
-<h2>Your Rating</h2>
-<form method="post" action="/company/<%=data[0].name%>">
-<span>&nbsp;&nbsp;</span>
-<span  name="one" id="oneStar" class="fa fa-star " onclick="showStar(1)" value="1" ></span>
-<span name="two" id="twoStar" class="fa fa-star " onclick="showStar(2)" value="2" ></span>
-<span name="three" id="threeStar" class="fa fa-star" onclick="showStar(3)" value="3" ></span>
-<span name="four" id="fourStar" class="fa fa-star" onclick="showStar(4)" value="4" ></span>
-<span name="five" id="fiveStar" class="fa fa-star" onclick="showStar(5)" value="5" ></span>
-<br>
-<span id="select" name="select"></span>
-<br>
-<textarea style="width:90%;height:150px;" placeholder="Viết bình luận..." type="text" name="comment" id='comment'></textarea>
-<input id="rate" class="button"  name="rateBtn" type="submit" value="Gửi." onclick="load();" alt="rate">
-</form>
-</div>
-<script>
-var star=0;var select='';
-function load()
-{	
+			<script>
+			var star=0;var select='';
+			function showStar(num)
+			{	star=num; 
+				select='<br><font color="blue">You will rate '+num+' star.<br></font>';
+				document.getElementById('select').innerHTML=select;
+				document.getElementById('alert').style.display='none';
+				showClick(num);	
 	
-	// comment có dạng 1<cmt> 2<cmt>  
-	var cmt=document.getElementById("comment").value;
-	document.getElementById("comment").value = star+cmt;
-	window.location.href='/company/<%=data[0].name%>';
-	
-}
-function showStar(num)
-{	star=num;
-	select='<br><font color="blue">You will rate '+num+' star.<br></font>';
-	document.getElementById('select').innerHTML='<br><font color="blue">You will rate '+num+' star.<br></font>';      
-	switch(num) {
-    case 1:
-        document.getElementById("oneStar").style.color = "orange";
-        document.getElementById("twoStar").style.color = "black";
-        document.getElementById("threeStar").style.color = "black";
-        document.getElementById("fourStar").style.color = "black";
-        document.getElementById("fiveStar").style.color = "black";
-        break;
-    case 2:
-        document.getElementById("oneStar").style.color = "orange";
-        document.getElementById("twoStar").style.color = "orange";
-        document.getElementById("threeStar").style.color = "black";
-        document.getElementById("fourStar").style.color = "black";
-        document.getElementById("fiveStar").style.color = "black";
-        break;
-    case 3:
-        document.getElementById("oneStar").style.color = "orange";
-        document.getElementById("threeStar").style.color = "orange";
-        document.getElementById("twoStar").style.color = "orange";
-        document.getElementById("fourStar").style.color = "black";
-        document.getElementById("fiveStar").style.color = "black";
-        break;
-    case 4:
-        document.getElementById("oneStar").style.color = "orange";
-        document.getElementById("threeStar").style.color = "orange";
-        document.getElementById("twoStar").style.color = "orange";
-        document.getElementById("fourStar").style.color = "orange";
-        document.getElementById("fiveStar").style.color = "black";
-        break;
-    default:
-    	document.getElementById("oneStar").style.color = "orange";
-        document.getElementById("threeStar").style.color = "orange";
-        document.getElementById("twoStar").style.color = "orange";
-        document.getElementById("fourStar").style.color = "orange";
-        document.getElementById("fiveStar").style.color = "orange";
-	}
-}
+			}
+			function load()
+			{		
+				// comment có dạng 1<cmt> 2<cmt>  
+				var cmt=document.getElementById("comment").value;
+				document.getElementById("comment").value = star+cmt;
+				window.location.href='/company/<%=data[0].name%>';	
+			}
 
-</script>
+			</script>
 			
             
             <p class="w3-large">
