@@ -1,12 +1,17 @@
-use new_schema;
+DROP DATABASE IF EXISTS `recruitment`;
+
+CREATE DATABASE `recruitment` CHARACTER SET utf8 COLLATE utf8_general_ci;;
+
+USE `recruitment`;
+
 CREATE TABLE IF NOT EXISTS company(
    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
    name VARCHAR(100) NOT NULL UNIQUE,
-   phone VARCHAR(15) NOT NULL,
+   phone VARCHAR(15) NOT NULL UNIQUE,
    adress VARCHAR(500) NOT NULL,
-   email VARCHAR(100) NOT NULL,
+   email VARCHAR(100) NOT NULL UNIQUE,
    pass VARCHAR(100) NOT NULL,
-   dateDK DATE NOT NULL ,
+   dateDK DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP() ,
    mst VARCHAR(15) NOT NULL,
    web VARCHAR(100) NOT NULL,
    location VARCHAR(100) NOT NULL,
@@ -25,12 +30,12 @@ CREATE TABLE IF NOT EXISTS users(
    adress VARCHAR(500),
    email VARCHAR(100) NOT NULL UNIQUE,
    pass VARCHAR(100) NOT NULL,
-   dateDK DATE,
-	Bdate DATE,
+   dateDK DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+	 Bdate DATETIME,
    bangCap VARCHAR(100) ,
    kiNangMem VARCHAR(100) ,
-ngoaiNgu VARCHAR(100),
-imgSrc VARCHAR(100)
+   ngoaiNgu VARCHAR(100),
+   imgSrc VARCHAR(100)
 );
 
 -- dich vu
@@ -44,8 +49,8 @@ CREATE TABLE IF NOT EXISTS service(
 CREATE TABLE IF NOT EXISTS job(
    viTri VARCHAR(100) NOT NULL PRIMARY KEY,
    mieuTa VARCHAR(2000) NOT NULL,
-    minSalary INT,
-     maxSalary INT 
+   minSalary INT,
+   maxSalary INT 
 );
 
 -- tin tuyen dung, quan he 1-N
