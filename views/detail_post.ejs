@@ -54,69 +54,71 @@
                 <i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>More</b>
             </p>
            
+			
+			<h2>Company Rating</h2>
+			<span>&nbsp;&nbsp;</span>
+			<span  id="one" class="fa fa-star "  ></span>
+			<span  id="two" class="fa fa-star "  ></span>
+			<span  id="three" class="fa fa-star"  ></span>
+			<span  id="four" class="fa fa-star"  ></span>
+			<span  id="five" class="fa fa-star"  ></span>
+			<span ><font id="tb" size="8" color="orange"> &nbsp;<%=star[0].avg%></font></span>
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;<input id="startRate" class="button"  type="submit" value="Rating this company." onclick="document.getElementById('your-rate').style.display='block'" alt="rate"></p>
 
-		<h2>Company Rating</h2>
-		<span>&nbsp;&nbsp;</span>
-		<span  id="one" class="fa fa-star "  ></span>
-		<span  id="two" class="fa fa-star "  ></span>
-		<span  id="three" class="fa fa-star"  ></span>
-		<span  id="four" class="fa fa-star"  ></span>
-		<span  id="five" class="fa fa-star"  ></span>
-		<span ><font id="tb" size="8" color="orange"> &nbsp;<%=star[0].avg%></font></span>
-		<p>&nbsp;&nbsp;&nbsp;&nbsp;<input id="startRate" class="button"  type="submit" value="Rating this company." onclick="document.getElementById('your-rate').style.display='block'" alt="rate"></p>
-		
-		<script>
-		//chua co ai danh gia
-		if('<%=star[0].avg%>'=='')document.getElementById("tb").innerHTML='&nbsp;0';
-		else
-		{		
-		show(parseFloat('<%=star[0].avg%>'));
-		}
-		</script>
+			<script>
+			//chua co ai danh gia
+			if('<%=star[0].avg%>'=='')document.getElementById("tb").innerHTML='&nbsp;0';
+			else
+			{		
+					show(parseFloat('<%=star[0].avg%>'));
+			}
+			</script>
+			
+			<div class="alert" id="alert">
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+			<strong><%=mess%></strong> 
+			</div>
 
-		<div class="alert" id="alert">
-		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-		<strong><%=mess%></strong> 
-		</div>
-		
-		<script>
+			<script>
 			if('<%=mess%>'=='')document.getElementById('alert').style.display='none';
-		</script>
-		
-		<div id="your-rate">
-		<h2>Your Rating</h2>
-		<form method="post" action="/company/<%=data[0].name%>">
-		<span>&nbsp;&nbsp;</span>
-		<span  name="one" id="oneStar" class="fa fa-star " onclick="showStar(1)" value="1" ></span>
-		<span name="two" id="twoStar" class="fa fa-star " onclick="showStar(2)" value="2" ></span>
-		<span name="three" id="threeStar" class="fa fa-star" onclick="showStar(3)" value="3" ></span>
-		<span name="four" id="fourStar" class="fa fa-star" onclick="showStar(4)" value="4" ></span>
-		<span name="five" id="fiveStar" class="fa fa-star" onclick="showStar(5)" value="5" ></span>
-		<br>
-		<span id="select" name="select"></span>
-		<br>
-		<textarea style="width:90%;height:150px;" placeholder="Viết bình luận..." type="text" name="comment" id='comment'></textarea>
-		<input id="rate" class="button"  name="rateBtn" type="submit" value="Gửi." onclick="load();" alt="rate">
-		</form>
-		</div>
+			</script>
 
-		<script>
-		var star=0;var select='';
-		function showStar(num)
-		{	star=num; 
-			select='<br><font color="blue">You will rate '+num+' star.<br></font>';
-			document.getElementById('select').innerHTML=select;
-			document.getElementById('alert').style.display='none';
-			showClick(num);	
-		}
-		function load()
-		{		
-			// comment có dạng 1<cmt> 2<cmt>  
-			var cmt=document.getElementById("comment").value;
-			document.getElementById("comment").value = star+cmt;
-			window.location.href='/company/<%=data[0].name%>';
-		}
-		</script>
+			<div id="your-rate">
+			<h2>Your Rating</h2>
+			<form method="post" action="/company/<%=data[0].name%>">
+			<span>&nbsp;&nbsp;</span>
+			<span  name="one" id="oneStar" class="fa fa-star " onclick="showStar(1)" value="1" ></span>
+			<span name="two" id="twoStar" class="fa fa-star " onclick="showStar(2)" value="2" ></span>
+			<span name="three" id="threeStar" class="fa fa-star" onclick="showStar(3)" value="3" ></span>
+			<span name="four" id="fourStar" class="fa fa-star" onclick="showStar(4)" value="4" ></span>
+			<span name="five" id="fiveStar" class="fa fa-star" onclick="showStar(5)" value="5" ></span>
+			<br>
+			<span id="select" name="select"></span>
+			<br>
+			<textarea style="width:90%;height:150px;" placeholder="Viết bình luận..." type="text" name="comment" id='comment'></textarea>
+			<input id="rate" class="button"  name="rateBtn" type="submit" value="Gửi." onclick="load();" alt="rate">
+			</form>
+			</div>
+
+			<script>
+			var star=0;var select='';
+			function showStar(num)
+			{	star=num; 
+				select='<br><font color="blue">You will rate '+num+' star.<br></font>';
+				document.getElementById('select').innerHTML=select;
+				document.getElementById('alert').style.display='none';
+				showClick(num);	
+	
+			}
+			function load()
+			{		
+				// comment có dạng 1<cmt> 2<cmt>  
+				var cmt=document.getElementById("comment").value;
+				document.getElementById("comment").value = star+cmt;
+				window.location.href='/company/<%=data[0].name%>';	
+			}
+
+			</script>
 			
             
             <p class="w3-large">
@@ -210,12 +212,16 @@
 							html += '<div class="w3-container">';
 							html += '<hr>';
 							html += '<img src="<%=data[0].imgSrc%>" alt="logo" class="w3-left w3-circle w3-margin-right" style="width:60px">';
-							
+							//định dạng bài đăng ở đây
 							var noidung='<%=post[i].noiDung%>';
-							noidung=noidung.substring(0, 140);
-							noidung+=' ...';
 							
-							html +='<p><font size="4" face="Verdana">'+noidung+'</font></p><br>';
+							
+							html +='<p><font size="4" face="Verdana">'
+							+'Công ty <b><%=data[i].name%></b> cần tuyển <b>100</b> vị trí<br>'
+							+'Lương <b>500$-2000$</b><br>'
+							+'Cụ thể:<br>'+noidung+'<br>'
+							+'Các ứng viên vui lòng Gửi CV về địa chỉ: <b><%=data[i].email%> </b>'
+							+'</font></p><br>';
 							
 							var timepost = Date.parse('<%=post[i].datePost%>');			//mysql định dạng Sun May 06 2018 00:00:00 GMT+0700 (SE Asia Standard Time)	
 							var current = new Date();
@@ -226,10 +232,9 @@
 							
 							html += '<div><font face="Comic Sans MS">';
 		
-							html += '<span style="float:right;color:blue;" >'+out+'</span>';
+							html += '<span style="float:right;color:blue;" ><b>'+out+'</b></span>';
 							html += '</font></div>';
 							html += '<br></div>';
-							html += '<button class="w3-button w3-block w3-dark-grey"><font size="4"><b><a style="text-decoration:none" href="/job/<%=post[i].id%>">+ Detail</a></b></font></button>';
 							html += '</div>';
 							html += '</div>';
 							html += '</p>';

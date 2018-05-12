@@ -16,9 +16,38 @@ exports.company = function (req, res) {
 //--------------------------------render company profile--------------------------------
 exports.profile = function (req, res) {
 	var companyName = req.params.companyName;
-    //Get request parameter
-    
-
+	var errorMess=''; // trigger mess
+   		
+	//rate star
+	if (req.method == "POST") 
+	{ 
+	    var post = req.body;		
+        var cmt	=post.comment.substring(1, post.comment.length );
+		var star=post.comment[0];			
+			console.log('user dang danh gia '+star+'sao');
+			console.log('user dang cmt '+cmt);
+			//tien hanh ghi lai danh gia vao bds, insert vao bang danh gia		
+			sql=SqlString.format("insert into danhgia(star,cmt,userID,companyID)  values(?,?,?,?);",[star, cmt,req.session.userId,req.session.companyId]);
+		
+			db.query(sql, function (err) {
+				if (err){ 
+						var errorParts = err.message.split(':');
+						if (errorParts[0] == 'ER_SIGNAL_EXCEPTION') //trigger throw error
+						{
+						console.log(errorParts[2]);
+						errorMess=errorParts[2];
+						} 
+						else console.log(err);
+				}
+				else{					
+					console.log('Danh gia cong ty thanh cong');						
+				}
+			});			
+				
+	}
+	
+	
+		
     //SQL query lay thong tin company
     var sql = SqlString.format("SELECT * FROM company WHERE name = ?", [companyName]);
 	
@@ -55,41 +84,12 @@ exports.profile = function (req, res) {
 			db.query(sql, function (err,danhgia) {
 				if (err) throw err;
 				else{	//sau khi load data,   load rate, cap nhap rate				
-						res.render('company_profile.ejs', {data:result,star:starAVG,danhgia:danhgia,post:Post});								
+						res.render('company_profile.ejs', {data:result,star:starAVG,danhgia:danhgia,post:Post,mess:errorMess});								
 				}
 			});	
-			
-			
-			
-			
-			
-			
-			
-			
+				
         } else res.send('Page not found');
-    });
-	
-	
-	//rate star
-	if (req.method == "POST") { 
-	    var post = req.body;		
-        var cmt	=post.comment.substring(1, post.comment.length );
-		var star=post.comment[0];		
-		if(star!=0){ 
-			console.log('user dang danh gia '+star+'sao');
-			console.log('user dang cmt '+cmt);
-			//tien hanh ghi lai danh gia vao bds, insert vao bang danh gia		
-			sql=SqlString.format("insert into danhgia(star,cmt,userID,companyID)  values(?,?,?,?);",[star, cmt,req.session.userId,req.session.companyId]);
-		
-			db.query(sql, function (err) {
-				if (err) throw err;
-				else{					
-					console.log('Danh gia cong ty thanh cong');
-									
-				}
-			});			
-		}		
-	}
+    });	
 	
 };
 

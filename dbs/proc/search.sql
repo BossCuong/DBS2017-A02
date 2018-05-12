@@ -5,12 +5,12 @@ CREATE PROCEDURE
   search( keyword varchar(100))
 BEGIN  
 	IF CHARACTER_LENGTH(keyword) = 0 THEN
-		select tieuDe,noiDung,datePost,imgSrc,(select avg(star) from danhgia where danhgia.companyID=company.id )as star
+		select post.id,tieuDe,noiDung,datePost,imgSrc,(select avg(star) from danhgia where danhgia.companyID=company.id )as star
 		from post,company 
 		where company.id=post.idCompany
         order by post.id; 
 	ELSE
-		SELECT tieuDe,noiDung,datePost,imgSrc, (select avg(star) from danhgia where danhgia.companyID=company.id )as star
+		SELECT post.id,tieuDe,noiDung,datePost,imgSrc, (select avg(star) from danhgia where danhgia.companyID=company.id )as star
 		from post,company
 		WHERE company.id=post.idCompany 
 		and post.id in 
