@@ -98,9 +98,8 @@ exports.login = function (req, res) {
 
         db.query(sql, function (err, results) {
             if (err) throw err;
-
-            if (results.length > 0) {
-                console.log(JSON.stringify(results, undefined, 2));
+            console.log(JSON.stringify(results[0], undefined, 2));
+            if (results[0].length > 0) {
                 req.session.userId = results[0][0].id;
                 req.session.user = results[0][0];
                 res.redirect('/profile');
