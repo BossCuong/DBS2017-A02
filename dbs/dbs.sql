@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS `recruitment`;
 
-CREATE DATABASE `recruitment` CHARACTER SET utf8 COLLATE utf8_general_ci;;
+CREATE DATABASE `recruitment` CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 USE `recruitment`;
 
