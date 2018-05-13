@@ -48,6 +48,7 @@ exports.signup = function (req, res) {
                 message: err.message,
                 alert: err.alert
             });
+            return;
         }
         db.query(sql, (err, result) => {
 
@@ -156,7 +157,7 @@ exports.profile = function (req, res) {
         return;
     }
 
-    var sql = SqlString.format('call getUserInfo(?)', [userId]);
+    var sql = SqlString.format('CALL getUserInfo(?)', [userId]);
     db.query(sql, function (err, result) {
         res.render('profile.ejs', {
             data: result[0][0]
@@ -166,18 +167,30 @@ exports.profile = function (req, res) {
 
 //---------------------------------edit users details after login----------------------------------
 exports.editprofile = function (req, res) {
-    var userId = req.session.userId;
-    if (userId == null) {
+    var userID = req.session.userId;
+    if (userID == null) {
         res.redirect("/login");
         return;
     }
+    var message = "";
     if (req.method == "POST") {
+        var post = req.body;
+        console.log(JSON.stringify(post, undefined, 2));
+        var first_name = post.first_name;
+        var last_name = post.last_name;
+        var Bdate = post.Bdate;
+        var phone = post.phone;
+        var address = post.address;
 
-    } else {
-        var sql = SqlString.format('call getUserInfo(?)', [userId]);
+        var sql = SqlString.format('CALL updateUserInfo(?,?,?,?,?,?)', [userID, first_name, last_name, Bdate, phone, address]);
+        db.query(sql, (err, results) => {
+            res.redirect('profile');
+        });
+    } else { //GET method
+        var sql = SqlString.format('CALL getUserInfo(?)', [userID]);
         db.query(sql, function (err, results) {
             res.render('edit_profile.ejs', {
-                data: results[0][0]
+                data: results[0][0],
             });
         });
     }

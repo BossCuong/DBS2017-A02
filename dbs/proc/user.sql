@@ -32,4 +32,24 @@ BEGIN
     SELECT * FROM users WHERE id = _id;
 END;//
 
+#--------------------------------------------------------------update user info for edit profile page---------------------------------------------
+DROP PROCEDURE IF EXISTS `updateUserInfo`//
+
+CREATE PROCEDURE `updateUserInfo`(
+    IN  _id          INT,
+    IN  _first_name  VARCHAR(100),
+    IN  _last_name   VARCHAR(100),
+    IN  _Bdate       DATE,
+    IN  _phone       VARCHAR(15),
+    in  _address     VARCHAR(500))
+BEGIN
+    UPDATE users
+    SET    first_name = _first_name,
+           last_name  = _last_name,
+           Bdate      = _Bdate,
+           phone      = _phone,
+           address    = _address
+    WHERE  id = _id;
+END;//
+
 DELIMITER ;
