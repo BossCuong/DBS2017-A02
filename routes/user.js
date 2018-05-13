@@ -158,7 +158,6 @@ exports.profile = function (req, res) {
 
     var sql = SqlString.format('call getUserInfo(?)', [userId]);
     db.query(sql, function (err, result) {
-       // console.log(JSON.stringify(result, undefined, 2));
         res.render('profile.ejs', {
             data: result[0][0]
         });

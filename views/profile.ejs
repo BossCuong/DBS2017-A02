@@ -9,74 +9,74 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
-	
-    <div class="container"  style="min-height:550px;">
+
+
+    <div class="container" style="min-height:550px;">
       <h1>Profile</h1>
       <hr>
       <div class="row">
-			<!-- left column -->
-			<div class="col-md-3">
-			  <div class="text-center">
-				<img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-			  </div>
-			</div>
+        <!-- left column -->
+        <div class="col-md-3">
+          <div class="text-center">
+            <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+          </div>
+        </div>
 
         <!-- edit form column -->
         <div class="col-md-9 personal-info">
-		
-          
-		  
+
+
+
           <form class="form-horizontal" role="form">
-           
-		   
-		   <div class="form-group">		
+
+
+            <div class="form-group">
               <label class="col-md-3 control-label"></label>
-              <div class="col-md-8">             
-					<h3 style="margin-left:-170px">Personal info
-					<input style="float:right" class="btn btn-primary" value="Edit" type="button">	
-					</h3>						
+              <div class="col-md-8">
+                <h3 style="margin-left:-170px">Personal info
+                  <input style="float:right" class="btn btn-primary" value="Edit" type="button">
+                </h3>
               </div>
             </div>
-			 
-			
-			
-		   
-		   <div class="form-group">
+
+
+
+
+            <div class="form-group">
               <label class="col-lg-3 control-label">First name:</label>
               <div class="col-lg-8">
                 <input class="form-control" value="<%= data.first_name %>" type="text" disabled>
               </div>
             </div>
-			
+
             <div class="form-group">
               <label class="col-lg-3 control-label">Last name:</label>
               <div class="col-lg-8">
                 <input class="form-control" value="<%= data.last_name %>" type="text" disabled>
               </div>
             </div>
-			
+
             <div class="form-group">
               <label class="col-lg-3 control-label">Email:</label>
               <div class="col-lg-8">
                 <input class="form-control" value="<%= data.email %>" type="text" disabled>
               </div>
             </div>
-			
+
             <div class="form-group">
               <label class="col-lg-3 control-label">Birth date:</label disabled>
               <div class="col-lg-8">
                 <input class="form-control" value="<%= data.Bdate %>" type="text" disabled>
               </div>
             </div>
-			
+
             <div class="form-group">
               <label class="col-md-3 control-label">Phone:</label>
               <div class="col-md-8">
                 <input class="form-control" type="<%= data.phone %>" disabled>
               </div>
             </div>
-			
+
             <div class="form-group">
               <label class="col-md-3 control-label">Address:</label>
               <div class="col-md-8">
@@ -88,20 +88,14 @@
                 </small>
               </div>
             </div>
-<<<<<<< HEAD
             <div class="form-group">
               <label class="col-md-3 control-label"></label>
               <div class="col-md-8">
                 <a href="/edit" class="btn btn-primary">Edit</a>
               </div>
             </div>
-=======
-			
-            
-			
->>>>>>> 69b90716e61867a41cb3efb8ffd269edd411a4d0
           </form>
-		  
+
         </div>
       </div>
     </div>
