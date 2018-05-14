@@ -43,13 +43,23 @@ CREATE PROCEDURE `updateUserInfo`(
     IN  _phone       VARCHAR(15),
     in  _address     VARCHAR(500))
 BEGIN
+	IF _Bdate=NULL
+	THEN
     UPDATE users
-    SET    first_name = _first_name,
-           last_name  = _last_name,
-           Bdate      = _Bdate,
-           phone      = _phone,
-           address    = _address
-    WHERE  id = _id;
+		SET    first_name = _first_name,
+				last_name  = _last_name,
+				phone      = _phone,
+				address    = _address
+		WHERE  id = _id;
+	ELSE
+    UPDATE users
+		SET    first_name = _first_name,
+				last_name  = _last_name,
+				Bdate      = _Bdate,
+				phone      = _phone,
+				address    = _address
+		WHERE  id = _id;
+	END IF;
 END;//
 
 DELIMITER ;

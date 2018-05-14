@@ -182,8 +182,8 @@ exports.editprofile = function (req, res) {
         var phone = post.phone;
         var address = post.address;
 
-        if (Bdate.length == 0) Bdate = null;
-
+        
+		
         var sql = SqlString.format('CALL updateUserInfo(?,?,?,?,?,?)', [userID, first_name, last_name, Bdate, phone, address]);
         db.query(sql, (err, results) => {
             if (err) console.log(JSON.stringify(err, undefined, 2));
