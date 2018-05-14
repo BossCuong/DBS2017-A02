@@ -29,7 +29,13 @@ DROP PROCEDURE IF EXISTS `getUserInfo`//
 CREATE PROCEDURE `getUserInfo`(
     IN  _id  INT(11))
 BEGIN
-    SELECT * FROM users WHERE id = _id;
+    SELECT first_name,
+           last_name,
+           email,
+           Bdate,
+           phone,
+           address
+    FROM users WHERE id = _id;
 END;//
 
 #--------------------------------------------------------------update user info for edit profile page---------------------------------------------
@@ -41,7 +47,7 @@ CREATE PROCEDURE `updateUserInfo`(
     IN  _last_name   VARCHAR(100),
     IN  _Bdate       DATE,
     IN  _phone       VARCHAR(15),
-    in  _address     VARCHAR(500))
+    IN  _address     VARCHAR(500))
 BEGIN
     UPDATE users
     SET    first_name = _first_name,
