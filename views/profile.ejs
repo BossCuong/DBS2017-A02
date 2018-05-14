@@ -63,7 +63,25 @@
             <div class="form-group">
               <label class="col-lg-3 control-label">Birth date:</label disabled>
               <div class="col-lg-8">
-                <input class="form-control" value="<%= data.Bdate %>" type="text" disabled>
+				<input class="form-control" id="Bdate" value="" type="text" disabled>
+				<script>
+							
+					//mysql định dạng Sun May 06 2018 00:00:00 GMT+0700 (SE Asia Standard Time)	
+					function convert(str) {
+						var mnths = { 
+						Jan:"01", Feb:"02", Mar:"03", Apr:"04", May:"05", Jun:"06",
+						Jul:"07", Aug:"08", Sep:"09", Oct:"10", Nov:"11", Dec:"12"
+						},
+						date = str.split(" ");
+						return [  date[2],mnths[date[1]], date[3] ].join("/");
+					}	
+					var time=''	;				
+					if('<%=data.Bdate%>'=='')time='';
+					else
+					time =convert('<%=data.Bdate%>');
+					document.getElementById('Bdate').value=time;
+				</script>
+                
               </div>
             </div>
 
