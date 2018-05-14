@@ -45,6 +45,7 @@ CREATE PROCEDURE `updateUserInfo`(
 BEGIN
 	IF _Bdate=NULL
 	THEN
+    UPDATE users
 		SET    first_name = _first_name,
 				last_name  = _last_name,
 				phone      = _phone,
