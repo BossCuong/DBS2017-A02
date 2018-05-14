@@ -41,7 +41,8 @@ CREATE TABLE IF NOT EXISTS users(
 -- dich vu
 CREATE TABLE IF NOT EXISTS service(
    name VARCHAR(100) NOT NULL PRIMARY KEY,
-   price INT NOT NULL
+   price INT NOT NULL,
+   HSD DATE NOT NULL
 );
 
 
@@ -190,8 +191,8 @@ values('css');
 insert into skill(name)  
 values('pascal');
 
-insert into service(name, price)  
-values('Tang like',1000);
+insert into service(name, price,HSD)  
+values('Tang like',1000,CURDATE());
 
 insert into post(tieuDe, noiDung,datePost,idCompany)  
 values('10 Java/python Devs (SQL, HTML5/CSS) ~$1200','Lập trình trong các dự án gia công phần mềm cho khách hàng Nhật sử dụng ngôn ngữ Java hoặc PHP. Tham gia các công đoạn tìm hiểu yêu cầu, phân tích, thiết kế, nghiên cứu công nghệ khi được phân công. Tham gia quản lý hay đào tạo nhóm nếu có khả năng phù hợp','2018-05-06',1);
@@ -246,8 +247,9 @@ values('Full Stack Developer Java','Curfex is a dynamic P2P blockchain technolog
 insert into post(tieuDe, noiDung,datePost,idCompany)  
 values('Android Developer (UI-UX, Java)','Lập trình trong các dự án gia công phần mềm cho khách hàng Nhật sử dụng ngôn ngữ Java hoặc PHP. Tham gia các công đoạn tìm hiểu yêu cầu, phân tích, thiết kế, nghiên cứu công nghệ khi được phân công.. Tham gia quản lý hay đào tạo nhóm nếu có khả năng phù hợp','2018-05-06',10);
 
--- tao danh gia mau
-insert into danhgia values (4,'Great',1,1);
+-- tạo data cho table danhgia
+insert into users(id,first_name,last_name,phone,address,email,pass,dateDK) values 
+(1,'Danh','Nguyen Hoai','01687807615','HCM','nguyenhoaidanh2096@gmail.com',123,CURRENT_TIMESTAMP());
 insert into danhgia values (3,'Great',1,2);
 insert into danhgia values (4,'Great',1,3);
 insert into danhgia values (5,'Great',1,4);
@@ -275,4 +277,4 @@ insert into danhgia values (2,'Great',1,15);
 insert into danhgia values (4,'Great',1,16);
 insert into danhgia values (2,'Great',1,17);
 insert into danhgia values (4,'Great',1,18);
-insert into danhgia values (5,'Great',1,19);
+insert into danhgia values (1,'Great',1,19);
