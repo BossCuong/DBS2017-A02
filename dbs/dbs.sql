@@ -245,3 +245,34 @@ insert into post(tieuDe, noiDung,datePost,idCompany)
 values('Full Stack Developer Java','Curfex is a dynamic P2P blockchain technology company based in Hong Ko­­­ng providing online peer-to-peer money transfer services. . We are looking for a full stack developer who will take a key role on our team. Our full stack developer must have knowledge in all stages of software development. . You will be working alongside other engineers and developers internationally, collaborating on various layers of the infrastructure for our platform.','2018-05-06',9);
 insert into post(tieuDe, noiDung,datePost,idCompany)  
 values('Android Developer (UI-UX, Java)','Lập trình trong các dự án gia công phần mềm cho khách hàng Nhật sử dụng ngôn ngữ Java hoặc PHP. Tham gia các công đoạn tìm hiểu yêu cầu, phân tích, thiết kế, nghiên cứu công nghệ khi được phân công.. Tham gia quản lý hay đào tạo nhóm nếu có khả năng phù hợp','2018-05-06',10);
+
+-- tao danh gia mau
+insert into danhgia values (4,'Great',1,1);
+insert into danhgia values (3,'Great',1,2);
+insert into danhgia values (4,'Great',1,3);
+insert into danhgia values (5,'Great',1,4);
+insert into danhgia values (4,'Great',1,5);
+insert into danhgia values (4,'Great',1,6);
+insert into danhgia values (4,'Great',1,7);
+insert into danhgia values (1,'Great',1,8);
+insert into danhgia values (4,'Great',1,9);
+insert into danhgia values (1,'Great',1,10);
+insert into danhgia values (4,'Great',1,8);
+insert into danhgia values (3,'Great',1,11);
+insert into danhgia values (4,'Great',1,12);
+insert into danhgia values (4,'Great',1,13);
+insert into danhgia values (5,'Great',1,14);
+insert into danhgia values (4,'Great',1,15);
+insert into danhgia values (4,'Great',1,16);
+insert into danhgia values (5,'Great',1,17);
+insert into danhgia values (4,'Great',1,18);
+insert into danhgia values (5,'Great',1,19);
+insert into danhgia values (3,'Great',1,11);
+insert into danhgia values (4,'Great',1,12);
+insert into danhgia values (2,'Great',1,13);
+insert into danhgia values (5,'Great',1,14);
+insert into danhgia values (2,'Great',1,15);
+insert into danhgia values (4,'Great',1,16);
+insert into danhgia values (2,'Great',1,17);
+insert into danhgia values (4,'Great',1,18);
+insert into danhgia values (5,'Great',1,19);
