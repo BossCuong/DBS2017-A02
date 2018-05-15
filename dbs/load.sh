@@ -8,3 +8,4 @@ mysql -u $1 -p $2  < ./proc/search.sql
 
 echo 'Load trigger'
 mysql -u $1 -p $2  < ./trigger/rate_check.sql
+mysql -u $1 -p $2  < ./trigger/user.sql

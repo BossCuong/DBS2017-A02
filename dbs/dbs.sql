@@ -138,7 +138,16 @@ Constraint FOREIGN KEY (skillName) REFERENCES skill(name),
 Constraint FOREIGN KEY (postID) REFERENCES post(id)
 );
 
-
+CREATE TABLE users_edit (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    phone VARCHAR(15),
+    address VARCHAR(500),
+    Bdate DATE,
+    changeDate DATETIME DEFAULT NULL,
+    action VARCHAR(50) DEFAULT NULL
+);
 
 
 

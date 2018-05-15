@@ -20,7 +20,7 @@ var bodyParser = require("body-parser");
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'nguyenhoaidanh',
+    password: '',
     database: 'recruitment'
 });
 
@@ -60,7 +60,8 @@ app.use((req, res, next) => {
 if (!process.env.PRODUCTION) {
     app.use('/database/user', query.user);
     app.use('/database/company', query.company);
-
+    app.use('/database/edit', query.user_edit);
+    app.use('/database/post', query.post);
 }
 
 //-------------------------------------------------Signup page------------------------------------------------------------
