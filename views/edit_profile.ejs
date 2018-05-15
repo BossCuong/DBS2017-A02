@@ -50,7 +50,47 @@
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Birth Date:</label>
                             <div class="col-lg-8">
-                                <input class="form-control" name="Bdate" type="date" placeholder="<%=data.Bdate%>">
+                                <input class="form-control" name="Bdate" id="Bdate" value="" max="" type="date">
+                                <script>
+                                    //mysql định dạng Sun May 06 2018 00:00:00 GMT+0700 (SE Asia Standard Time)	
+                                    function convert(str) {
+                                        var mnths = {
+                                                Jan: "01",
+                                                Feb: "02",
+                                                Mar: "03",
+                                                Apr: "04",
+                                                May: "05",
+                                                Jun: "06",
+                                                Jul: "07",
+                                                Aug: "08",
+                                                Sep: "09",
+                                                Oct: "10",
+                                                Nov: "11",
+                                                Dec: "12"
+                                            },
+                                            date = str.split(" ");
+                                        return [date[3], date[2], mnths[date[1]]].join("-");
+                                    }
+
+                                    function str_pad(str) {
+                                        return String("00" + str).slice(-2);
+                                    }
+
+                                    var time = '';
+                                    if ('<%=data.Bdate%>' == '') time = null;
+                                    else
+                                        time = convert('<%=data.Bdate%>');
+                                    document.getElementById('Bdate').value = time;
+
+
+                                    var now = new Date();
+
+
+                                    max = [now.getFullYear() - 18, str_pad(now.getMonth() + 1), str_pad(now.getDate())]
+                                        .join("-");
+                                    document.getElementById('Bdate').max = max;
+                                    console.log(max);
+                                </script>
                             </div>
                         </div>
                         <div class="form-group">
@@ -70,7 +110,7 @@
                             <div class="col-md-8">
                                 <input class="btn btn-primary" value="Save Changes" type="submit">
                                 <span></span>
-                                <input class="btn btn-default" value="Cancel" type="reset">
+                                <a href="/edit" class="btn btn-default">Cancel</a>
                             </div>
                         </div>
                     </form>
