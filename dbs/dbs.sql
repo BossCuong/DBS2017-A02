@@ -201,7 +201,10 @@ insert into skill(name)
 values('pascal');
 
 insert into service(name, price,HSD)  
-values('Tang like',1000,CURDATE());
+values('Tang like',1000,'2018-12-12');
+insert into service(name, price,HSD)  
+values('Sms annoucement',1000,'2018-12-12');
+
 
 insert into post(tieuDe, noiDung,datePost,idCompany)  
 values('10 Java/python Devs (SQL, HTML5/CSS) ~$1200','Lập trình trong các dự án gia công phần mềm cho khách hàng Nhật sử dụng ngôn ngữ Java hoặc PHP. Tham gia các công đoạn tìm hiểu yêu cầu, phân tích, thiết kế, nghiên cứu công nghệ khi được phân công. Tham gia quản lý hay đào tạo nhóm nếu có khả năng phù hợp','2018-05-06',1);
@@ -259,6 +262,7 @@ values('Android Developer (UI-UX, Java)','Lập trình trong các dự án gia c
 -- tạo data cho table danhgia
 insert into users(id,first_name,last_name,phone,address,email,pass,dateDK) values 
 (1,'Danh','Nguyen Hoai','01687807615','HCM','nguyenhoaidanh2096@gmail.com',123,CURRENT_TIMESTAMP());
+
 insert into danhgia values (3,'Great',1,2);
 insert into danhgia values (4,'Great',1,3);
 insert into danhgia values (5,'Great',1,4);
@@ -287,3 +291,53 @@ insert into danhgia values (4,'Great',1,16);
 insert into danhgia values (2,'Great',1,17);
 insert into danhgia values (4,'Great',1,18);
 insert into danhgia values (1,'Great',1,19);
+
+insert into dangkidichvu(nameDV, companyID,dateDK)  
+values('Tang like',1,curdate());
+insert into dangkidichvu(nameDV, companyID,dateDK)  
+values('Sms annoucement',9,curdate());
+
+insert into dapungkinang(userID , skillName )  
+values(1,'css');
+insert into dapungkinang(userID , skillName )  
+values(1,'java');
+insert into dapungkinang(userID , skillName )  
+values(1,'C#');
+
+insert into job(viTri  , mieuTa,minSalary,maxSalary  )  
+values('Tester','Có 2 năm kinh nghiệm',500,10000);
+insert into job(viTri  , mieuTa,minSalary,maxSalary  )  
+values('DEV','Có 3 năm kinh nghiệm',500,10000);
+insert into job(viTri  , mieuTa,minSalary,maxSalary  )  
+values('Coder','Có 4 năm kinh nghiệm',500,10000);
+
+insert into haveJob(postID , vitriCV )  
+values(	1,'Tester');
+insert into haveJob(postID , vitriCV )  
+values(	2,'DEV');
+insert into haveJob(postID , vitriCV )  
+values(	3,'coder');
+
+insert into tuyendung(companyID  , vitriCV)  
+values(	1,'Tester');
+insert into tuyendung(companyID  , vitriCV) 
+values(	2,'DEV');
+insert into tuyendung(companyID  , vitriCV) 
+values(	3,'coder');
+
+insert into apply(postID,userID,status,dateApply,CV)  
+values(	1,1,'wait',curdate(),'goo.gl/abx4');
+insert into apply(postID,userID,status,dateApply,CV)  
+values(	14,1,'wait',curdate(),'goo.gl/azx4');
+insert into apply(postID,userID,status,dateApply,CV)  
+values(	12,1,'wait',curdate(),'goo.gl/a3ccsx4');
+
+insert into doihoikinang(postID,skillName)  
+values(	1,'Java');
+insert into doihoikinang(postID,skillName)  
+values(	21,'html');
+insert into doihoikinang(postID,skillName)  
+values(	11,'css');
+
+insert into users_edit (id,first_name,last_name,phone,address,Bdate,changeDate,action )  
+values(	1,'Bui','Bao Cuong',0168722222,'HCM city','1998-03-02',now(),'complete');
